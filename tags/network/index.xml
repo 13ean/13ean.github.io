@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on 13ean&#39;s Github Page</title>
+    <link>https://13ean.github.io/tags/network/</link>
+    <description>Recent content in network on 13ean&#39;s Github Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://13ean.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>计算机网络基础</title>
+      <link>https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</guid>
+      <description>计算机网络模型 OSI 七层模型  物理层
+ 传输单位：比特 Bit 功能作用：确定与传输媒介的接口的一些特性，电气，机械，功能，规程特性 设备：中继器，集线器 协议：RJ45等   数据链路层
+ 数据链路层可以划分为：逻辑链路控制（LLC）子层和介质访问控制（MAC）子层 传输单位：帧 Frame 功能作用：  链路管理：链路的建立、维持和释放 帧同步：确定帧的开始与结束 流量控制：点对点的，即链路层的相邻设备，采用滑动窗口机制 差错控制：将有差错的物理线路改进为对网络层来说无差错的数据链路，采用奇偶校检码和循环冗余编码（CRC） 透明传输：使得不论什么样的比特组合都可以在数据链路层传输 物理寻址：向每个帧的头部加入了源MAC地址和目的MAC地址 访问控制：当单个线路被多个设备共享时，数据链路层的MAC子层帮助于确定哪个设备在给定时间控制信道  设备：网桥，交换机 协议：HDLC协议，PPP协议，ARP  网络层
+ 传输单位：数据包（分组） Packet 功能作用：  路由转发：确定哪条路由适合从源到目的地 逻辑寻址：向数据包头部加入了目的IP地址和源IP地址  设备：路由器 协议：IP，ICMP，IGMP，RIP，OSPF，BGP，RARP  传输层
+ 传输单位：数据报（报文）Segments 功能作用：  提供面向连接的TCP和无连接的UDP   会话层
+ 主要为两个会话层实体进行会话，而进行的对话连接的管理服务。提供的服务可使应用建立和维持会话，并能使会话获得同步。会话层使用校验点，可使通信会话在通信失效时从校验点继续恢复通信。这种能力对于传送大的文件极为重要。 功能作用：对话管理，数据流同步和重新同步  表示层
+ 处理两个应用实体之间进行数据交换的语法问题，解决数据交换中存在的语法不一致以及数据表示方法不同等问题 功能作用：数据编码的转换，数据加密与解密，数据压缩与恢复  应用层
+ 直接提供文件传输，电子邮件，网页浏览等服务给用户。 协议：FTP，SMTP，POP3，HTTP，SSH，DNS   TCP/IP模型  网络接口层 网际层 传输层 应用层  路由算法 内部网关协议 IGP 用于自治系统内部的路由协议</description>
+    </item>
+    
+  </channel>
+</rss>

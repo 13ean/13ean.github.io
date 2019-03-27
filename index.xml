@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>13ean&#39;s Github Page on 13ean&#39;s Github Page</title>
+    <link>https://13ean.github.io/</link>
+    <description>Recent content in 13ean&#39;s Github Page on 13ean&#39;s Github Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>计算机网络基础</title>
+      <link>https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</guid>
+      <description>
+
+&lt;h1 id=&#34;计算机网络模型&#34;&gt;计算机网络模型&lt;/h1&gt;
+
+&lt;h2 id=&#34;osi-七层模型&#34;&gt;OSI 七层模型&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;物理层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传输单位：比特 Bit&lt;/li&gt;
+&lt;li&gt;功能作用：确定与传输媒介的接口的一些特性，电气，机械，功能，规程特性&lt;/li&gt;
+&lt;li&gt;设备：中继器，集线器&lt;/li&gt;
+&lt;li&gt;协议：RJ45等
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据链路层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数据链路层可以划分为：逻辑链路控制（LLC）子层和介质访问控制（MAC）子层&lt;/li&gt;
+&lt;li&gt;传输单位：帧 Frame&lt;/li&gt;
+&lt;li&gt;功能作用：
+
+&lt;ul&gt;
+&lt;li&gt;链路管理：链路的建立、维持和释放&lt;/li&gt;
+&lt;li&gt;帧同步：确定帧的开始与结束&lt;/li&gt;
+&lt;li&gt;流量控制：点对点的，即链路层的相邻设备，采用滑动窗口机制&lt;/li&gt;
+&lt;li&gt;差错控制：将有差错的物理线路改进为对网络层来说无差错的数据链路，采用奇偶校检码和循环冗余编码（CRC）&lt;/li&gt;
+&lt;li&gt;透明传输：使得不论什么样的比特组合都可以在数据链路层传输&lt;/li&gt;
+&lt;li&gt;物理寻址：向每个帧的头部加入了源MAC地址和目的MAC地址&lt;/li&gt;
+&lt;li&gt;访问控制：当单个线路被多个设备共享时，数据链路层的MAC子层帮助于确定哪个设备在给定时间控制信道&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;设备：网桥，交换机&lt;/li&gt;
+&lt;li&gt;协议：HDLC协议，PPP协议，ARP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;网络层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传输单位：数据包（分组） Packet&lt;/li&gt;
+&lt;li&gt;功能作用：
+
+&lt;ul&gt;
+&lt;li&gt;路由转发：确定哪条路由适合从源到目的地&lt;/li&gt;
+&lt;li&gt;逻辑寻址：向数据包头部加入了目的IP地址和源IP地址&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;设备：路由器&lt;/li&gt;
+&lt;li&gt;协议：IP，ICMP，IGMP，RIP，OSPF，BGP，RARP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;传输层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传输单位：数据报（报文）Segments&lt;/li&gt;
+&lt;li&gt;功能作用：
+
+&lt;ul&gt;
+&lt;li&gt;提供面向连接的TCP和无连接的UDP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;会话层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;主要为两个会话层实体进行会话，而进行的对话连接的管理服务。提供的服务可使应用建立和维持会话，并能使会话获得同步。会话层使用校验点，可使通信会话在通信失效时从校验点继续恢复通信。这种能力对于传送大的文件极为重要。&lt;/li&gt;
+&lt;li&gt;功能作用：对话管理，数据流同步和重新同步&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;表示层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;处理两个应用实体之间进行数据交换的语法问题，解决数据交换中存在的语法不一致以及数据表示方法不同等问题&lt;/li&gt;
+&lt;li&gt;功能作用：数据编码的转换，数据加密与解密，数据压缩与恢复&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;应用层&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;直接提供文件传输，电子邮件，网页浏览等服务给用户。&lt;/li&gt;
+&lt;li&gt;协议：FTP，SMTP，POP3，HTTP，SSH，DNS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;tcp-ip模型&#34;&gt;TCP/IP模型&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;网络接口层&lt;/li&gt;
+&lt;li&gt;网际层&lt;/li&gt;
+&lt;li&gt;传输层&lt;/li&gt;
+&lt;li&gt;应用层&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;路由算法&#34;&gt;路由算法&lt;/h1&gt;
+
+&lt;h2 id=&#34;内部网关协议-igp&#34;&gt;内部网关协议 IGP&lt;/h2&gt;
+
+&lt;p&gt;用于自治系统内部的路由协议&lt;/p&gt;
+
+&lt;h3 id=&#34;rip协议&#34;&gt;RIP协议&lt;/h3&gt;
+
+&lt;h4 id=&#34;特点&#34;&gt;特点&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基于Bellham-Ford（距离矢量）算法&lt;/li&gt;
+&lt;li&gt;RIP使用跳数来衡量距离，每一条链路的成本为1，不考虑带宽，时延等因素&lt;/li&gt;
+&lt;li&gt;跳数为&lt;strong&gt;16&lt;/strong&gt;，表示该网络&lt;strong&gt;不可达&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;使用UDP报文进行路由信息的交换&lt;/li&gt;
+&lt;li&gt;RIP路由协议用“更新（UNPDATES）”和“请求（REQUESTS）”这两种分组来传输信息&lt;/li&gt;
+&lt;li&gt;每隔30秒向&lt;strong&gt;相邻&lt;/strong&gt;路由器发送一次更新信息，若180秒内未收到某邻居发送的报文，则将该路由置为不可达，若300秒内未接收到，则将其从路由表中删除&lt;/li&gt;
+&lt;li&gt;更新信息反映了该路由器所有的路由选择信息数据库，路由选择信息数据库的每个条目由“局域网上能达到的IP地址”和“与该网络的距离”两部分组成&lt;/li&gt;
+&lt;li&gt;请求信息用于寻找网络上能发出RIP报文的其他设备&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;慢收敛问题&#34;&gt;慢收敛问题&lt;/h4&gt;
+
+&lt;p&gt;任何距离向量路由选择协议（如RIP）都有一个问题，路由器不知道网络的全局情况，路由器必须依靠相邻路由器来获取网络的可达信息。由于路由选择更新信息在网络上传播慢，距离向量路由选择算法有一个慢收敛问题，这个问题将导致不一致性产生。&lt;/p&gt;
+
+&lt;h4 id=&#34;更新算法&#34;&gt;更新算法&lt;/h4&gt;
+
+&lt;p&gt;假设路由器A，收到了其邻居路由器B发来的更新信息&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先对更新信息中的所有距离加1&lt;/li&gt;
+&lt;li&gt;若A中的路由表没有该网络的路由信息，则加入该网络，下一跳设置为B&lt;/li&gt;
+&lt;li&gt;若A中路由表存在该网络，且下一跳为B，则更新该网络的距离&lt;/li&gt;
+&lt;li&gt;若A中路由表存在该网络，下一跳不为B，且其距离小于当前距离，则更新下一跳为B，更新距离&lt;/li&gt;
+&lt;li&gt;若A中路由表存在该网络，下一跳不为B，且其距离不小于当前距离，则不更新&lt;/li&gt;
+&lt;li&gt;对于A中路由表存在的网络，但是更新信息中没有的网络，则不更新&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ospf协议&#34;&gt;OSPF协议&lt;/h3&gt;
+
+&lt;p&gt;开放最短路径优先（OSPF）是链路状态路由协议，用于使用Dijkstra算法找到源路由器和目的地路由器之间的最佳路径。链路状态路由协议是使用触发更新的概念的协议。即，如果在学习的路由表中观察到变化，则仅触发更新，而不像路由表所在的距离矢量路由协议在一段时间内交换。&lt;/p&gt;
+
+&lt;h4 id=&#34;特点-1&#34;&gt;特点&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;与大多数路由协议不同（参考BGP和RIP的工作过程），本协议不依赖于传输层协议（如TCP、UDP）提供数据传输、错误检测与恢复服务，数据包直接封装在网际协议（协议号89）内传输&lt;/li&gt;
+&lt;li&gt;使用Dijkstra算法计算出到达每一网络的最短路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;外部网关协议-egp&#34;&gt;外部网关协议 EGP&lt;/h2&gt;
+
+&lt;p&gt;用于自治系统间接口上的路由协议&lt;/p&gt;
+
+&lt;h3 id=&#34;bgp协议&#34;&gt;BGP协议&lt;/h3&gt;
+
+&lt;p&gt;BGP用于在不同的自治系统（AS）之间交换路由信息，运行在TCP协议之上。当两个AS需要交换路由信息时，每个AS都必须指定一个运行BGP的节点，来代表AS与其他的AS交换路由信息。这个节点可以是一个主机。但通常是路由器来执行BGP。两个AS中利用BGP交换信息的路由器也被称为边界网关（Border Gateway）或边界路由器（Border Router）。&lt;/p&gt;
+
+&lt;h1 id=&#34;tcp协议&#34;&gt;TCP协议&lt;/h1&gt;
+
+&lt;h2 id=&#34;特点-2&#34;&gt;特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TCP是面向连接的，在传输数据之前必须先建立连接，传输完毕后释放连接&lt;/li&gt;
+&lt;li&gt;TCP只支持点对点通信&lt;/li&gt;
+&lt;li&gt;TCP提供可靠交付，保证数据无差错，不丢失，无重复，有序到达&lt;/li&gt;
+&lt;li&gt;TCP提供全双工通信，双方都可以发送和接收数据&lt;/li&gt;
+&lt;li&gt;面向字节流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tcp可靠传输&#34;&gt;TCP可靠传输&lt;/h2&gt;
+
+&lt;h3 id=&#34;差错控制&#34;&gt;差错控制：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;校验和：每个TCP报文段都包括检验和字段，校验和用来检查报文段是否出现传输错误，如果报文段出现传输错误，TCP检查出错就丢弃该报文段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;编号与确认&#34;&gt;编号与确认&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TCP为报文编号，以实现报文的有序接收&lt;/li&gt;
+&lt;li&gt;接收端检查报文是否出错，发现出错时就丢弃，不发确认；而发送端通过检查接收端的确认，判断发送的报文段是否已经正确到达目的地&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;超时重传&#34;&gt;超时重传&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;发送端根据发出的报文段在规定的时间内是否收到确认，从而来判断该报文段是否丢失或传输出错。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tcp流量控制与拥塞控制&#34;&gt;TCP流量控制与拥塞控制&lt;/h2&gt;
+
+&lt;h3 id=&#34;滑动窗口&#34;&gt;滑动窗口：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;停止等待协议：发送窗口swnd=1，接收窗口rwnd=1
+
+&lt;ul&gt;
+&lt;li&gt;发送方每发送一个报文，则直到接收到接收方的确认报文才发送下一个报文&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;后退N协议：发送窗口swnd&amp;gt;1，接受窗口rwnd=1
+
+&lt;ul&gt;
+&lt;li&gt;发送方可以连续发送发送窗口内的报文，每当接收到一个错误帧，则需要重传该帧及之后的所有帧&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;选择重传协议：发送窗口swnd&amp;gt;1，接收窗口rwnd&amp;gt;1
+
+&lt;ul&gt;
+&lt;li&gt;只重传错误帧即可&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;慢启动与拥塞避免&#34;&gt;慢启动与拥塞避免&lt;/h3&gt;
+
+&lt;h4 id=&#34;慢启动算法&#34;&gt;慢启动算法&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;初始时，设置拥塞窗口cwnd=1，表示可以传输一个最大的报文段MSS的数据，设置慢启动门限初值ssthresh&lt;/li&gt;
+&lt;li&gt;当cwnd &amp;lt; ssthresh 时，每收到新报文的ACK，则拥塞窗口cwnd++，因此每过一个RTT，则cwnd*2，呈指数增长&lt;/li&gt;
+&lt;li&gt;当cwnd &amp;gt;= ssthresh 时，改用拥塞避免算法
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;拥塞避免算法&#34;&gt;拥塞避免算法&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当 cwdn &amp;gt;= ssthresh 时，每过一个TRR，拥塞窗口cwnd++&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;超时重传-拥塞发生&#34;&gt;超时重传（拥塞发生）&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将ssthresh置为拥塞发生时拥塞窗口cwnd大小的一半&lt;/li&gt;
+&lt;li&gt;拥塞窗口cwnd大小置为1，改用慢启动算法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;快重传与快恢复&#34;&gt;快重传与快恢复&lt;/h3&gt;
+
+&lt;h4 id=&#34;快重传&#34;&gt;快重传&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每当发送端接收到三个重复确认帧时，则直接开启重传，而不等待RTO超时&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;快恢复&#34;&gt;快恢复&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重新将慢开始门限ssthresh设置为拥塞窗口cwnd的一半&lt;/li&gt;
+&lt;li&gt;将拥塞窗口cwnd设置为ssthresh，然后采用拥塞避免算法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;流量控制和拥塞控制的区别&#34;&gt;流量控制和拥塞控制的区别：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;流量控制是针对点对点的通信量的控制，是端到端的问题。流量控制所作的就是控制发送端的发送速率，以使得接收端能够接收。&lt;/li&gt;
+&lt;li&gt;而拥塞控制是止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tcp连接管理&#34;&gt;TCP连接管理&lt;/h2&gt;
+
+&lt;h3 id=&#34;tcp的建立过程&#34;&gt;TCP的建立过程&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先client发送连接请求，发送TCP报文，其中SYN=1， seq=x，然后clien进入SYN_SEND状态&lt;/li&gt;
+&lt;li&gt;server接收到连接请求，发送TCP报文，进行确认，其中SYN=1，ACK=1，seq=y，ack=x+1，然后server进入SYN_RCVD状态&lt;/li&gt;
+&lt;li&gt;clieten收到server发送过来的报文后，进行确认，其中ACK=1，seq=x+1，ack=y+1，然后client进入ESTABLISHED状态，server接收到该报文后也进入ESTABLISHED状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;tcp释放连接过程&#34;&gt;TCP释放连接过程&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A发送断开连接请求，发送TCP报文，其中FIN=1，seq=x，然后A进入FIN_WAIT_1状态&lt;/li&gt;
+&lt;li&gt;B接收到A发送过来的断开请求后，发送TCP报文，其中ACK=1，seq=y,ack=x+1，然后B进入CLOSE_WAIT状态，此时B仍然可以向发起者发送数据&lt;/li&gt;
+&lt;li&gt;B数据发送完毕后，发送断开连接请求，发送TCP报文，其中FIN=1，seq=y&amp;rsquo;，然后B进入LAST_ACK状态&lt;/li&gt;
+&lt;li&gt;A接收到B的断连请求后，发送确认包，其中ACK=1，ack=y&amp;rsquo;+1，然后A进入TIME_WAIR状态，然后B接收到该确认包后关闭连接，进入CLOSED状态&lt;/li&gt;
+&lt;li&gt;A在等待一定时间（两个最大段生命周期 2MSL）后，进入CLOSED状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;为何是三次握手&#34;&gt;为何是三次握手？&lt;/h3&gt;
+
+&lt;p&gt;为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致。而要解决这个问题, 无论你在消息中包含什么信息, 三次通信是理论上的最小值. 所以三次握手不是TCP本身的要求, 而是为了满足&amp;rdquo;在不可靠信道上可靠地传输信息&amp;rdquo;这一需求所导致的。&lt;/p&gt;
+
+&lt;h3 id=&#34;为何四次挥手&#34;&gt;为何四次挥手？&lt;/h3&gt;
+
+&lt;p&gt;因此TCP是全双工通信的，需要双方分别断开连接。第一次挥手表示A数据发送完毕，请求断开连接；第二次挥手表示B同意A断开连接，B仍可向A发送数据，A仍可接收B发送的数据；第三次挥手表示B数据发送完毕，请求断开连接；第四次挥手表示A同意B断开连接。然后A在等待两个最大生命周期后，连接中断，以防B未接收到A发送的确认。&lt;/p&gt;
+
+&lt;h1 id=&#34;udp协议&#34;&gt;UDP协议&lt;/h1&gt;
+
+&lt;h2 id=&#34;特点-3&#34;&gt;特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;UDP是无连接的，因此减少了开销和发送数据的时延&lt;/li&gt;
+&lt;li&gt;UDP尽最大努力交付，不保证可靠交付&lt;/li&gt;
+&lt;li&gt;UDP是面向报文的，发送方的UDP对应用程序交下来的报文在添加首部后就向下交付给IP层，对交下来的报文既不合并也不拆分&lt;/li&gt;
+&lt;li&gt;UDP没有拥塞控制，保证了实时性&lt;/li&gt;
+&lt;li&gt;支持一对一，一对多，多对多的通信&lt;/li&gt;
+&lt;li&gt;UDP首部只有8个字节，开销小&lt;/li&gt;
+&lt;li&gt;UDP将安全和排序等功能移交给上层应用来完成，极大降低了执行时间，使速度得到了保证。&lt;/li&gt;
+&lt;li&gt;应用：RIP协议，DNS协议，DHCP协议以及广泛应用在多媒体应用中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;udp分组结构&#34;&gt;UDP分组结构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个UDP报文分UDP报头和UDP数据区两部分&lt;/li&gt;
+&lt;li&gt;UDP报头包括4个字段：来源端口号，目的端口号，报文长度，校验和&lt;/li&gt;
+&lt;li&gt;每个字段占用2个字节（即16个二进制位）&lt;/li&gt;
+&lt;li&gt;数据报的长度是指包括报头和数据部分在内的总字节数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;dns&#34;&gt;DNS&lt;/h1&gt;
+
+&lt;p&gt;DNS协议就是用来将域名解析到IP地址的一种协议，也可以将IP地址转换为域名。DNS是在名字服务器层次结构中实现的分布式数据库。它是用于客户端和服务器之间的消息交换的应用层协议。DNS协议基于UDP和TCP协议的，端口号53，用户到服务器采用UDP，DNS服务器通信采用TCP。&lt;/p&gt;
+
+&lt;h2 id=&#34;dns域名结构&#34;&gt;DNS域名结构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通用域名：.com，.org，.net&lt;/li&gt;
+&lt;li&gt;国家域名：.cn，.us&lt;/li&gt;
+&lt;li&gt;反向域名：IP到域名的映射&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;dns域名服务器&#34;&gt;DNS域名服务器&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;根域名服务器&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;顶级域名服务器
+负责管理所有的二级域名&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;权限域名服务器&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;本地域名服务器&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;地址解析&#34;&gt;地址解析&lt;/h2&gt;
+
+&lt;h3 id=&#34;递归查询&#34;&gt;递归查询&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当客户机提出查询请求时，首先在本地计算机的缓存中查找，如果在本地无法查询信息，则将查询请求发给本地DNS服务器&lt;/li&gt;
+&lt;li&gt;当本地DNS服务器接到查询后，首先在该服务器管理的区域的记录中查找，如果找到该记录，则进行此记录进行解析，如果没有区域信息可以满足查询要求，服务器在本地缓存中查找&lt;/li&gt;
+&lt;li&gt;如果本地服务器不能在本地找到客户机查询的信息，将客户机请求发送到根域名DNS服务器&lt;/li&gt;
+&lt;li&gt;根名称服务器包含关于顶级域的至少一个服务器的信息。然后将查询发送到相应的顶级域服务器。&lt;/li&gt;
+&lt;li&gt;如果顶级域名服务器包含映射，则将响应将发送回根服务器，然后发送回主机的本地服务器。&lt;/li&gt;
+&lt;li&gt;若顶级域域名服务器不包含映射，则应包含目的主机的本地DNS服务器的IP地址&lt;/li&gt;
+&lt;li&gt;目的主机的本地DNS服务器知道目的主机的IP地址，然后将发送回顶级域名服务器，然后发送给根域名服务器，然后发送到主机的本地域名服务器，最后到主机&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;迭代查询&#34;&gt;迭代查询&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当客户机提出查询请求时，首先在本地计算机的缓存中查找，如果在本地无法查询信息，则将查询请求发给本地DNS服务器&lt;/li&gt;
+&lt;li&gt;当本地DNS服务器接到查询后，首先在该服务器管理的区域的记录中查找，如果找到该记录，则进行此记录进行解析，如果没有区域信息可以满足查询要求，服务器在本地缓存中查找&lt;/li&gt;
+&lt;li&gt;如果本地服务器不能在本地找到客户机查询的信息，将客户机请求发送到根域名DNS服务器&lt;/li&gt;
+&lt;li&gt;根域DNS服务器将顶级域名服务器发送给本地DNS服务器&lt;/li&gt;
+&lt;li&gt;然后本地DNS服务器向顶级域名服务器查询，顶级域名服务器将目的主机的IP地址或者目的主机的本地DNS服务器发送给本地DNS服务器&lt;/li&gt;
+&lt;li&gt;本地DNS服务器向目的主机的本地DNS服务器查询，得到目的主机的IP地址&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;http-https&#34;&gt;HTTP/HTTPS&lt;/h1&gt;
+
+&lt;h2 id=&#34;两者的不同&#34;&gt;两者的不同&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;HTTP&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;HTTPS&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;地址&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;http://&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;https://&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;端口&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;80&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;443&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;安全性&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不安全&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;安全&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;网络层级&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;工作在应用层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;工作在传输层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;加密&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;未加密，明文传输&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;加密&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;证书&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不需要&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;需要&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;常见问题&#34;&gt;常见问题&lt;/h1&gt;
+
+&lt;h2 id=&#34;比较ipv4和ipv6&#34;&gt;比较IPv4和IPv6&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;IPv4&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;IPv6&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;地址长度&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;32位&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;128位&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;地址配置&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;手动，DHCP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;自动，重新编号&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;地址空间&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;小&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;安全性&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;依赖于应用层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;内置安全功能IPSEC&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;地址表示&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;十进制&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16进制&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;数据包流标识&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可用&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可用的，并在标头中使用流标签字段&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;校验和&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可用&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;加密和身份验证&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不提供&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;提供&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;请解释主机a是如何向主机b发送一条消息的&#34;&gt;请解释主机A是如何向主机B发送一条消息的&lt;/h2&gt;
+
+&lt;h3 id=&#34;当主机a与主机b在同一个子网中&#34;&gt;当主机A与主机B在同一个子网中&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;构造目的地址为B的IP数据包&lt;/li&gt;
+&lt;li&gt;根据主机A上的路由表内容，发现目的主机B位于相同子网&lt;/li&gt;
+&lt;li&gt;查询本地ARP缓存，解析目的MAC地址&lt;/li&gt;
+&lt;li&gt;若不存在，则发送ARP请求帧广播，网络中每一台主机收到后比对本机MAC地址，若不匹配则丢弃该ARP请求&lt;/li&gt;
+&lt;li&gt;目的主机B将主机A的IP与MAC映射关系写入ARP缓存，发送向A主机ARP回复消息&lt;/li&gt;
+&lt;li&gt;当主机A收到从主机B发来的ARP回复消息时，会用主机B的IP和MAC地址映射更新ARP缓存&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将主机B的MAC地址写入数据帧头部，发送该数据帧&lt;/p&gt;
+
+&lt;h3 id=&#34;主机a与主机b不在同一个子网中&#34;&gt;主机A与主机B不在同一个子网中&lt;/h3&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;构造目的地址为B的IP数据包&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;根据主机A上的路由表内容对该IP数据包进行路由选择：路由选择算法，路由表&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将路由的MAC地址封装到数据帧中发送出去&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;路由器接收到该数据帧，发现帧中的目的MAC地址与路由器接收端MAC地址相同，则解封装，上传到网络层&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;路由器找到数据包的目的IP地址，并查询路由表，然后将发送到下一个路由&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;类似地，直至到达目的主机所在子网，目的主机发现数据帧中的目的MAC与本机网卡MAC地址相同，拆除数据帧封装，上传到网络层&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;网络层比较数据包中的目的IP，然后拆除网络成封装，上传到传输层，确认，排序， 重组，然后上交到应用层&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;当在浏览器中输入一个url时发生了什么-请逐步地-尽可能详细的描述&#34;&gt;当在浏览器中输入一个url时发生了什么？请逐步地，尽可能详细的描述。&lt;/h2&gt;
+
+&lt;h3 id=&#34;客户端构建并发送请求&#34;&gt;客户端构建并发送请求&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;应用层域名解析：通过负责域名解析的DNS服务获取网址的IP地址&lt;/li&gt;
+&lt;li&gt;应用层生成HTTP请求报文&lt;/li&gt;
+&lt;li&gt;传输层建立TCP连接，DNS使用UDP协议，HTTP使用TCP协议&lt;/li&gt;
+&lt;li&gt;网络层通过IP协议，OSPF协议进行路由选择&lt;/li&gt;
+&lt;li&gt;数据链路层实现网络相邻结点间可靠的数据通信&lt;/li&gt;
+&lt;li&gt;物理层将数据链路层的帧转换成二进制比特流，在物理媒介上进行传输&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;网络传输&#34;&gt;网络传输&lt;/h3&gt;
+
+&lt;p&gt;传输要经过各种网络设备，交换机，路由器等。&lt;/p&gt;
+
+&lt;h4 id=&#34;交换机&#34;&gt;交换机&lt;/h4&gt;
+
+&lt;p&gt;交换机是数据链路层设备，比特流到达交换机，交换机除了对比特流进行放大外，还根据源MAC地址进行学习，根据目的MAC地址进行转发。交换机根据数据帧中的目的MAC地址査询MAC地址表，把比特流从对应的端口发送出去&lt;/p&gt;
+
+&lt;h4 id=&#34;路由器&#34;&gt;路由器&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;路由器收到比特流，转换成帧上传到数据链路层，&lt;/li&gt;
+&lt;li&gt;路由器比较数据帧的目的MAC地址，如果有与路由器接收端口相同的MAC地址，则路由器的数据链路层把数据帧进行解封装，然后上传到路由器的网络层&lt;/li&gt;
+&lt;li&gt;路由器找到数据包的目的IP地址，并查询路由表，将数据从入端口转发到出端口。&lt;/li&gt;
+&lt;li&gt;接着在网络层重新封装成数据包packet，下沉到数据链路层重新封装成帧frame，下沉到物理层，转换成二进制比特流，发送出去&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;服务端处理请求返回&#34;&gt;服务端处理请求返回&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;服务器接收到这个比特流，把比特流转换成帧格式，上传到数据链路层&lt;/li&gt;
+&lt;li&gt;服务器发现数据帧中的目的MAC地址与本网卡的MAC地址相同，服务器拆除数据链路层的封装后，把数据包上传到网络层&lt;/li&gt;
+&lt;li&gt;服务器的网络层比较数据包中的目的IP地址，发现与本机的IP地址相同，服务器拆除网络层的封装后，把数据分段上传到传输层&lt;/li&gt;
+&lt;li&gt;传输层对数据分段进行确认、排序、重组，确保数据传输的可靠性&lt;/li&gt;
+&lt;li&gt;数据最后被传到服务器的应用层&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;浏览器渲染&#34;&gt;浏览器渲染&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;客户机接受到二进制比特流之后，把比特流转换成帧格式，上传到数据链路层&lt;/li&gt;
+&lt;li&gt;客户机发现数据帧中的目的MAC地址与本网卡的MAC地址相同，拆除数据链路层的封装后，把数据包上传到网络层&lt;/li&gt;
+&lt;li&gt;网络层比较数据包中的目的IP地址，发现与本机的IP地址相同，拆除网络层的封装后，把数据分段上传到传输层&lt;/li&gt;
+&lt;li&gt;传输层对数据分段进行确认、排序、重组，确保数据传输的可靠性&lt;/li&gt;
+&lt;li&gt;数据最后被传到应用层&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://13ean.github.io/about/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://13ean.github.io/about/</guid>
+      <description>&lt;p&gt;该Blog用于记录13ean的生活以及学习的点点滴滴。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
