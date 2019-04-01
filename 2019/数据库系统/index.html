@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="13ean">
+  
+  
+  
+  <link rel="prev" href="https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" />
+  
+  <link rel="canonical" href="https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://13ean.github.io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://13ean.github.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://13ean.github.io/favicon-16x16.png">
+  <link rel="manifest" href="https://13ean.github.io/site.webmanifest">
+  <link rel="mask-icon" href="https://13ean.github.io/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           数据库系统 | 13ean&#39;s Github Page
+       
+  </title>
+  <meta name="title" content="数据库系统 | 13ean&#39;s Github Page">
+    
+  
+  <link rel="stylesheet" href="https://13ean.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="https://13ean.github.io/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://13ean.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "数据库系统",
+    "headline" : "数据库系统",
+    "description" : "视图 视图是一个虚拟表，其内容由查询定义。视图一经定义便存入数据库中。视图中的数据只是存放在基本表中的数据。
+视图作用  简单性：视图可以简化用户的操作 安全性：通过视图用户只能查询和修改他们所看到的数据 逻辑数据独立性：视图可以帮助用户屏蔽真实表结构变化带来的影响  完整性约束 关系完整性约束是为保证数据库中数据的正确性和相容性，对关系模型提出的某种约束条件或规则。完整性通常包括域完整性，实体完整性、参照完整性和用户定义完整性，其中域完整性，实体完整性和参照完整性，是关系模型必须满足的完整性约束条件
+ 域完整性：保证指定列的数据具有正确的数据类型、格式和有效的数据范围 实体完整性：指关系的主关键字不能重复也不能取“空值”，保证数据库中数据表的每一个特定实体的记录都是唯一的 参照完整性：定义建立关系之间联系的主关键字与外部关键字引用的约束条件。当增加、修改或删除数据库表中记录时，可以借助参照完整性来保证相关联表之间数据的一致性 用户定义完整性：由用户定义的完整性。用户定义完整性可以定义不属于其他任何完整性分类的特定业务规则  索引 数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。
+索引的优点  通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性 可以大大加快数据的检索速度，这也是创建索引的最主要的原因 可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义 在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间 通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能  索引的缺点  创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加 索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大 当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度  设置索引的原则 应设置索引的情况  较频繁查询的列上创建索引 在经常需要根据范围进行搜索的列上创建索引 在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构 在经常用在连接的列上 在经常需要排序的列上创建索引，因为索引已经排序 在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度  不应设置索引的情况  在查询中很少使用或者参考的列不应该创建索引 选择性很差的列，即这些列取值很少 当修改性能远远大于检索性能时，不应该创建索引  索引分类：  唯一索引：唯一索引不允许两行具有相同的索引值 主键索引：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空 聚集索引(Clustered)：表中各行的物理顺序与索引顺序相同，每个表只能有一个 非聚集索引(Non-clustered)：非聚集索引指定表种记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针  索引类型 顺序索引 使用B树或者B+树作为其索引结构
+散列索引 哈希索引（hash index）基于哈希表实现。对于每一行数据，存储引擎都会对所有的索引列计算一个哈希码（hash code），哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。对于hash相同的，采用链表的方式解决冲突。
+优点：
+ 访问哈希索引的数据非常快  限制：
+ 哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行 哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序 哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序 哈希索引只支持等值比较查询，包括=、IN()、&lt;&gt;，也不支持任何范围查询 当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行  散列索引与顺序索引的区别    Hash索引 顺序索引     无序 有序   只支持点查询 支持点查询和范围查询    存储过程 存储过程是一个预编译的SQL语句。",
+    "inLanguage" : "zh-CN",
+    "author" : "13ean",
+    "creator" : "13ean",
+    "publisher": "13ean",
+    "accountablePerson" : "13ean",
+    "copyrightHolder" : "13ean",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-28 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-28 00:00:00 &#43;0000 UTC",
+    "url" : "https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/",
+    "wordCount" : "326",
+    "keywords" : [ "OS","interview", "13ean&#39;s Github Page"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://13ean.github.io">13ean&#39;s Github Page</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="https://13ean.github.io/" title="">13ean</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://13ean.github.io">13ean&#39;s Github Page</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="https://13ean.github.io/" title="">13ean</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">数据库系统</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://13ean.github.io" rel="author">13ean</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-28 itemprop="datePublished">March 28, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="视图">视图</h1>
+
+<p>视图是一个虚拟表，其内容由查询定义。视图一经定义便存入数据库中。视图中的数据只是存放在基本表中的数据。</p>
+
+<h2 id="视图作用">视图作用</h2>
+
+<ul>
+<li>简单性：视图可以简化用户的操作</li>
+<li>安全性：通过视图用户只能查询和修改他们所看到的数据</li>
+<li>逻辑数据独立性：视图可以帮助用户屏蔽真实表结构变化带来的影响</li>
+</ul>
+
+<h1 id="完整性约束">完整性约束</h1>
+
+<p>关系完整性约束是为保证数据库中数据的正确性和相容性，对关系模型提出的某种约束条件或规则。完整性通常包括域完整性，实体完整性、参照完整性和用户定义完整性，其中域完整性，实体完整性和参照完整性，是关系模型必须满足的完整性约束条件</p>
+
+<ul>
+<li>域完整性：保证指定列的数据具有正确的数据类型、格式和有效的数据范围</li>
+<li>实体完整性：指关系的主关键字不能重复也不能取“空值”，保证数据库中数据表的每一个特定实体的记录都是唯一的</li>
+<li>参照完整性：定义建立关系之间联系的主关键字与外部关键字引用的约束条件。当增加、修改或删除数据库表中记录时，可以借助参照完整性来保证相关联表之间数据的一致性</li>
+<li>用户定义完整性：由用户定义的完整性。用户定义完整性可以定义不属于其他任何完整性分类的特定业务规则</li>
+</ul>
+
+<h1 id="索引">索引</h1>
+
+<p>数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。</p>
+
+<h2 id="索引的优点">索引的优点</h2>
+
+<ul>
+<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性</li>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因</li>
+<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间</li>
+<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能</li>
+</ul>
+
+<h2 id="索引的缺点">索引的缺点</h2>
+
+<ul>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加</li>
+<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度</li>
+</ul>
+
+<h2 id="设置索引的原则">设置索引的原则</h2>
+
+<h3 id="应设置索引的情况">应设置索引的情况</h3>
+
+<ul>
+<li>较频繁查询的列上创建索引</li>
+<li>在经常需要根据范围进行搜索的列上创建索引</li>
+<li>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构</li>
+<li>在经常用在连接的列上</li>
+<li>在经常需要排序的列上创建索引，因为索引已经排序</li>
+<li>在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度</li>
+</ul>
+
+<h3 id="不应设置索引的情况">不应设置索引的情况</h3>
+
+<ul>
+<li>在查询中很少使用或者参考的列不应该创建索引</li>
+<li>选择性很差的列，即这些列取值很少</li>
+<li>当修改性能远远大于检索性能时，不应该创建索引</li>
+</ul>
+
+<h3 id="索引分类">索引分类：</h3>
+
+<ul>
+<li>唯一索引：唯一索引不允许两行具有相同的索引值</li>
+<li>主键索引：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空</li>
+<li>聚集索引(Clustered)：表中各行的物理顺序与索引顺序相同，每个表只能有一个</li>
+<li>非聚集索引(Non-clustered)：非聚集索引指定表种记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针</li>
+</ul>
+
+<h3 id="索引类型">索引类型</h3>
+
+<h4 id="顺序索引">顺序索引</h4>
+
+<p>使用B树或者B+树作为其索引结构</p>
+
+<h4 id="散列索引">散列索引</h4>
+
+<p>哈希索引（hash index）基于哈希表实现。对于每一行数据，存储引擎都会对所有的索引列计算一个哈希码（hash code），哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。对于hash相同的，采用链表的方式解决冲突。</p>
+
+<p>优点：</p>
+
+<ul>
+<li>访问哈希索引的数据非常快</li>
+</ul>
+
+<p>限制：</p>
+
+<ul>
+<li>哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行</li>
+<li>哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序</li>
+<li>哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序</li>
+<li>哈希索引只支持等值比较查询，包括=、IN()、&lt;&gt;，也不支持任何范围查询</li>
+<li>当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行</li>
+</ul>
+
+<h4 id="散列索引与顺序索引的区别">散列索引与顺序索引的区别</h4>
+
+<table>
+<thead>
+<tr>
+<th align="center">Hash索引</th>
+<th align="center">顺序索引</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">无序</td>
+<td align="center">有序</td>
+</tr>
+
+<tr>
+<td align="center">只支持点查询</td>
+<td align="center">支持点查询和范围查询</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="存储过程">存储过程</h1>
+
+<p>存储过程是一个预编译的SQL语句。</p>
+
+<h2 id="存储过程优点">存储过程优点</h2>
+
+<ul>
+<li>存储过程是预编译过的，执行效率高</li>
+<li>存储过程的代码直接存放于数据库中，通过存储过程名直接调用，减少网络通讯</li>
+<li>安全性高，执行存储过程需要有一定权限的用户</li>
+<li>存储过程可以重复使用，可减少数据库开发人员的工作量</li>
+</ul>
+
+<h2 id="存储过程缺点">存储过程缺点</h2>
+
+<ul>
+<li>每个数据库的存储过程语法几乎都不一样，十分难以维护</li>
+<li>业务逻辑放在数据库上，难以迭代</li>
+</ul>
+
+<h2 id="存储过程和函数的区别">存储过程和函数的区别</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">存储过程</th>
+<th align="center">函数</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">用途</td>
+<td align="center">用于在数据库中完成特定的操作或者任务</td>
+<td align="center">用于特定的数据</td>
+</tr>
+
+<tr>
+<td align="center">声明</td>
+<td align="center">程序头部声明用procedure</td>
+<td align="center">程序头部声明用function</td>
+</tr>
+
+<tr>
+<td align="center">返回类型</td>
+<td align="center">程序头部声明时不需描述返回类型</td>
+<td align="center">程序头部声明时要描述返回类型</td>
+</tr>
+
+<tr>
+<td align="center">参数模式</td>
+<td align="center">可以使用in/out/in out 三种模式的参数</td>
+<td align="center">可以使用in/out/in out 三种模式的参数</td>
+</tr>
+
+<tr>
+<td align="center">能否独立执行</td>
+<td align="center">可作为一个独立的语句来执行</td>
+<td align="center">不能独立执行，必须作为表达式的一部分调用</td>
+</tr>
+
+<tr>
+<td align="center">调用</td>
+<td align="center">SQL语句(DML 或SELECT)中不可调用存储过程</td>
+<td align="center">SQL语句(DML 或SELECT)中可以调用函数</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="触发器">触发器</h2>
+
+<p>触发器是一种特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。</p>
+
+<h1 id="join">join</h1>
+
+<h2 id="内连接">内连接</h2>
+
+<p>在每个表中找出符合条件的共有记录</p>
+
+<h2 id="外连接">外连接</h2>
+
+<h3 id="左连接">左连接</h3>
+
+<p>根据左表的记录，在被连接的右表中找出符合条件的记录与之匹配，如果找不到与左表匹配的，用null表示</p>
+
+<h3 id="右连接">右连接</h3>
+
+<p>根据右表的记录，在被连接的左表中找出符合条件的记录与之匹配，如果找不到匹配的，用null填充</p>
+
+<h3 id="全外连接">全外连接</h3>
+
+<p>返回左表和右表中的所有记录。若某一行再另一个表中没有与之匹配的，用null表示（结果是左连接和右连接的并集）</p>
+
+<h2 id="笛卡尔积交叉连接">笛卡尔积（交叉连接）</h2>
+
+<p>将两个表中的每条记录都进行组合。不带WHERE条件子句，它将会返回被连接的两个表的笛卡尔积，返回结果的行数等于两个表行数的乘积，如果带where，返回或显示的是匹配的行数（先生成笛卡尔积，再根据查询条件进行筛选）。</p>
+
+<h1 id="事务">事务</h1>
+
+<p>事务是并发控制的基本单元。事务是一个操作序列，由一条或多条SQL语句组成，这些操作要么都执行成功，要么都不执行，它是一个不可分割的工作单位。</p>
+
+<h2 id="事务的acid特性">事务的ACID特性：</h2>
+
+<h3 id="原子性atomicity">原子性（Atomicity）</h3>
+
+<p>事务是不可分割的工作单位。只有事务中的全部操作执行成功，事务才算执行成功。若任何操作失败，则该事务执行失败，数据库的状态必须回滚到事务开始前的状态。</p>
+
+<h3 id="一致性consistency">一致性（Consistency）</h3>
+
+<p>事务应保证数据库只能从一个一致状态转移到另一个一致状态。一致状态是指数据库中的数据应满足完整性约束。即事务开始前和结束后数据库数据的完整性没有被破坏。</p>
+
+<h3 id="隔离性isolation">隔离性（Isolation）</h3>
+
+<p>事务的隔离性要求每个事务的对象和其它事务的操作对象能相互分离。即该事务提交前对其它事务都不可见，这通常使用锁来实现。多个事务并发执行时，一个事务的执行不应影响其他事务的执行。</p>
+
+<h3 id="持久性durability">持久性（Durability）</h3>
+
+<p>事务一旦提交其结果就是永久性的。即数据写入到了数据库中，即使宕机数据也不会丢失。</p>
+
+<h2 id="可串行化">可串行化</h2>
+
+<p>可串行化指事务并行执行的结果与某个顺序的串行执行结果相同。可串行化</p>
+
+<h3 id="先后顺序图串行化图">先后顺序图/串行化图</h3>
+
+<p>对于调度S，先后顺序图是一个有向图<span  class="math">\(G = (N, E)\)</span>，由节点集合<span  class="math">\(N\)</span>和有向边集合<span  class="math">\(E\)</span>构成，构建方式如下：</p>
+
+<ul>
+<li>为每个事务创建一个节点</li>
+<li>如果事务<span  class="math">\(T_i\)</span>读取了<span  class="math">\(T_j\)</span>已经写操作的数据项，创建一条有向边<span  class="math">\(T_j \to T_i\)</span></li>
+<li>如果事务<span  class="math">\(T_i\)</span>对<span  class="math">\(T_j\)</span>已经读取的数据项进行写操作，创建一条有向边<span  class="math">\(T_j \to T_i\)</span></li>
+<li>如果事务<span  class="math">\(T_i\)</span>对<span  class="math">\(T_j\)</span>写操作的数据项进行写操作，创建一条有向边<span  class="math">\(T_j \to T_i\)</span>
+如果S的先后顺序图中出现了有向边<span  class="math">\(T_i \to T_j\)</span>，则在任何与之等价的穿行调度<span  class="math">\(S'\)</span>中，<span  class="math">\(T_i\)</span>必须出现在<span  class="math">\(T_j\)</span>的前面。如果先后顺序图中存在环，则该调度不可串行化。</li>
+</ul>
+
+<h2 id="数据冲突引起的问题">数据冲突引起的问题</h2>
+
+<ul>
+<li>脏读（read uncommitted data）：在<span  class="math">\(T_2\)</span>提交前，<span  class="math">\(T_1\)</span>读取了<span  class="math">\(T_2\)</span>已经修改了的数据</li>
+<li>不可重复读（unreaptable read）：在<span  class="math">\(T_2\)</span>提交前，<span  class="math">\(T_1\)</span>修改了<span  class="math">\(T_2\)</span>已经读取的数据，如果<span  class="math">\(T_2\)</span>再次读取该数据，则发现不同的值</li>
+<li>更新丢失（overwrite uncommitted data）：在<span  class="math">\(T_2\)</span>提交前，<span  class="math">\(T_1\)</span>修改了<span  class="math">\(T_2\)</span>已经写的数据。</li>
+</ul>
+
+<h2 id="事务的隔离级别">事务的隔离级别</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">read uncommit 读脏数据</th>
+<th align="left">unreaptable read 不可重复读</th>
+<th align="left">overwrite uncommitted 更新丢失</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Read uncommited 读未提交</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+</tr>
+
+<tr>
+<td align="left">Read committed 读已提交</td>
+<td align="left">不可能</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+</tr>
+
+<tr>
+<td align="left">Reaptable read 重复读取</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+<td align="left">可能</td>
+</tr>
+
+<tr>
+<td align="left">Serializable</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="乐观与悲观">乐观与悲观</h2>
+
+<h3 id="悲观技术">悲观技术</h3>
+
+<h4 id="加锁方法">加锁方法</h4>
+
+<p>加锁是并发事务串行化的常用方法。事务必须在开始影响的数据库读/写操作前获声明一个共享的（读）锁或者专用的（写）锁。如果声明互斥锁，锁禁止其他事务修改甚至读取该数据项。</p>
+
+<ul>
+<li>共享锁：如果事务在一个数据项上加上共享锁，他只能读而不能更新该数据项。</li>
+<li>互斥锁：如果事务在一个数据项上加上互斥锁，他既能读也能更新该数据项。</li>
+</ul>
+
+<p>读操作是不冲突的，因此允许多个并发事务获取数据项的共享锁。另一方面，互斥锁赋予事务对该数据项的独占的访问权限，因此其他事务都无法读取或者更新该数据项。</p>
+
+<h5 id="两段锁2pl协议">两段锁（2PL）协议</h5>
+
+<ul>
+<li>事务对一个数据项操作之前，必须先获得对该项的锁</li>
+<li>一旦事务释放了第一个锁，就不能再获得任何新锁</li>
+<li>如果允许对锁进行升级，只能再增长阶段进行，且事务必须等待，知道另一个事务释放了该数据项的共享锁。锁的降级只能再缩减阶段进行</li>
+</ul>
+
+<p>算法：</p>
+
+<ul>
+<li>在Transaction开始时，对每个需要访问的数据加锁；如果不能加锁，就等待，直到加锁成功</li>
+<li>执行Transaction的内容</li>
+<li>在Transaction commit前，集中进行解锁</li>
+<li>Commit</li>
+</ul>
+
+<h5 id="锁的粒度">锁的粒度</h5>
+
+<ul>
+<li>意向锁
+
+<ul>
+<li>IS(a)：将对a下面更细粒度的数据元素进行读</li>
+<li>IX(a)：将对a下面更细粒度的数据元素进行写</li>
+</ul></li>
+<li>为了得到S，IS：所有祖先必须为IS或IX</li>
+<li>为了得到X，IX：所有祖先必须为IX</li>
+<li>锁兼容性矩阵：</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">IS</th>
+<th align="left">IX</th>
+<th align="left">S</th>
+<th align="left">X</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">IS</td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+</tr>
+
+<tr>
+<td align="left">IX</td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+</tr>
+
+<tr>
+<td align="left">S</td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+<td align="left"><span  class="math">\(\checkmark\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+</tr>
+
+<tr>
+<td align="left">X</td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+<td align="left"><span  class="math">\(\times\)</span></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="时间戳方法">时间戳方法</h4>
+
+<p>在时间戳方法中，较旧的事务（即有较小时间戳的事务），在冲突事件中有较高的优先级。采用时间戳协议，如果一个事务试图读或写一个数据项。只有当该数据项是由一个较旧事务更新时，这次读写才被允许。否则，请求读/写的事务将重新启动，并获得一个新的时间戳。</p>
+
+<p>每个数据项也有一个读时间戳（其值为最后一个读该数据项事务的时间戳）和一个写时间戳（其值为最后一个写该数据项事务的时间戳）。</p>
+
+<h5 id="时间戳排序协议">时间戳排序协议</h5>
+
+<ul>
+<li>事务<span  class="math">\(T\)</span>发出一个读请求 <span  class="math">\(read(x)\)</span>
+
+<ul>
+<li>若 <span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
+<li>反之，若 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则读操作继续，并令<span  class="math">\(readTimestamp(x) = T_{timestamp}\)</span></li>
+</ul></li>
+<li>事务T发出一个写请求 write(x)
+
+<ul>
+<li>若<span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
+<li>若<span  class="math">\(readTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
+<li>否则，<span  class="math">\(readTimestamp(x) \le T_{timestamp}\)</span> 且 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则写操作继续，并令<span  class="math">\(writeTimestamp(x) = T_{timestamp}\)</span></li>
+</ul></li>
+</ul>
+
+<h5 id="托马斯写规则">托马斯写规则</h5>
+
+<ul>
+<li>事务T发出一个写请求 write(x)
+
+<ul>
+<li>若<span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则写操作被忽略</li>
+<li>若<span  class="math">\(readTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
+<li>否则，<span  class="math">\(readTimestamp(x) \le T_{timestamp}\)</span> 且 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则写操作继续，并令<span  class="math">\(writeTimestamp(x) = T_{timestamp}\)</span></li>
+</ul></li>
+</ul>
+
+<h3 id="乐观技术">乐观技术</h3>
+
+<p>乐观技术基于这样一个假设：冲突是罕见的，去除为保证串行化而对事务的延迟，将会更高效。在事务提交时进行检查，若发生冲突，事务必须被回滚。</p>
+
+<p>事务执行分为三个阶段：</p>
+
+<ul>
+<li><strong>读</strong>：事务开始执行，读数据到私有工作区，并在私有工作区上完成事务的处理请求，完成修改操作</li>
+<li><strong>验证</strong>：如果事务决定提交，检查事务是否与其它事务冲突
+
+<ul>
+<li>如果存在冲突，那么终止事务，清空私有工作区</li>
+<li>重试事务</li>
+</ul></li>
+<li><strong>写</strong>：验证通过，没有发现冲突，那么把私有工作区的修改复制到数据库公共数据中</li>
+</ul>
+
+<p>确认阶段检查事务的读写操作是否发生了冲突。每个事务T开始时分配一个时间戳start(T)，事务的验证阶段分配时间戳validate(T)，事务的结束阶段finish(T)。通过确认检查，需满足以下条件之一：</p>
+
+<ul>
+<li>事务T开始前，所有较旧时间戳的事务S均已完成，即start(T) &lt; finish(S)</li>
+<li>若事务T在一个较旧的事务S结束前开始，则：
+
+<ul>
+<li>S所写数据不是当前事务T读取的数据，（保证较旧事务的写不被当前事务读）且</li>
+<li>当前事务T进入验证阶段前，所有较旧事务S已完成其写阶段，即validate(T) &lt; finish(S) &lt; validate(T)。（保证写是串行的）</li>
+</ul></li>
+</ul>
+
+<h1 id="数据库的恢复">数据库的恢复</h1>
+
+<p>采用如下机制进行恢复：</p>
+
+<ul>
+<li>备份机制：周期地对数据库进行备份</li>
+<li>日志机制：跟踪当前事务的状态与数据库的改变</li>
+<li>检查点机制：数据库与事务日志文件的同步点</li>
+</ul>
+
+<h2 id="wal-写前日志">WAL 写前日志</h2>
+
+<h3 id="日志文件">日志文件</h3>
+
+<p>日志文件包括下列数据：</p>
+
+<ul>
+<li>事务记录
+
+<ul>
+<li>事务标识符</li>
+<li>日志记录类型（事务开始，插入，删除，更新，撤销，提交）</li>
+<li>所操作数据项的标识符（更新，插入，删除）</li>
+<li>数据项的前像</li>
+<li>数据项的后像</li>
+</ul></li>
+<li>检查点记录</li>
+</ul>
+
+<p>如果系统发生故障，恢复过程使用日志对事物进行撤销或重做：</p>
+
+<ul>
+<li>如果“事务开始”和“事务提交”都出现在日志中，使用日志记录来重做，按日志写入更新后字段的后像</li>
+<li>如果“事务开始”出现在日志文件中，但是“事务提交”未出现，则进行撤销，根据日志文件中数据项的前像，是数据库恢复到事务开始前的状态</li>
+</ul>
+
+<h1 id="三个范式">三个范式</h1>
+
+<h2 id="第一范式">第一范式</h2>
+
+<p>所有属性都是不可分的基本数据项</p>
+
+<h2 id="第二范式">第二范式</h2>
+
+<p>每个表有且仅有一个数据元素为主键，其他数据元素与主键一一对应</p>
+
+<h2 id="第三范式">第三范式</h2>
+
+<p>指表中的所有数据元素不但要能唯一地被主键所标识，而且他们之间还必须相互独立，不存在其他的函数关系。</p>
+
+<h1 id="nosql">No-SQL</h1>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>13ean </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/>https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://13ean.github.io/tags/os/">
+                    #OS</a></span>
+            
+            <span class="tag"><a href="https://13ean.github.io/tags/interview/">
+                    #interview</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://13ean.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="计算机网络基础"><i class="iconfont icon-left"></i>&nbsp;计算机网络基础</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "13ean" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://13ean.github.io">13ean</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="https://13ean.github.io/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -7,8 +7,536 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>All rights reserved - 2019</copyright>
-    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>数据库系统</title>
+      <link>https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;h1 id=&#34;视图&#34;&gt;视图&lt;/h1&gt;
+
+&lt;p&gt;视图是一个虚拟表，其内容由查询定义。视图一经定义便存入数据库中。视图中的数据只是存放在基本表中的数据。&lt;/p&gt;
+
+&lt;h2 id=&#34;视图作用&#34;&gt;视图作用&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;简单性：视图可以简化用户的操作&lt;/li&gt;
+&lt;li&gt;安全性：通过视图用户只能查询和修改他们所看到的数据&lt;/li&gt;
+&lt;li&gt;逻辑数据独立性：视图可以帮助用户屏蔽真实表结构变化带来的影响&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;完整性约束&#34;&gt;完整性约束&lt;/h1&gt;
+
+&lt;p&gt;关系完整性约束是为保证数据库中数据的正确性和相容性，对关系模型提出的某种约束条件或规则。完整性通常包括域完整性，实体完整性、参照完整性和用户定义完整性，其中域完整性，实体完整性和参照完整性，是关系模型必须满足的完整性约束条件&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;域完整性：保证指定列的数据具有正确的数据类型、格式和有效的数据范围&lt;/li&gt;
+&lt;li&gt;实体完整性：指关系的主关键字不能重复也不能取“空值”，保证数据库中数据表的每一个特定实体的记录都是唯一的&lt;/li&gt;
+&lt;li&gt;参照完整性：定义建立关系之间联系的主关键字与外部关键字引用的约束条件。当增加、修改或删除数据库表中记录时，可以借助参照完整性来保证相关联表之间数据的一致性&lt;/li&gt;
+&lt;li&gt;用户定义完整性：由用户定义的完整性。用户定义完整性可以定义不属于其他任何完整性分类的特定业务规则&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;索引&#34;&gt;索引&lt;/h1&gt;
+
+&lt;p&gt;数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。&lt;/p&gt;
+
+&lt;h2 id=&#34;索引的优点&#34;&gt;索引的优点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性&lt;/li&gt;
+&lt;li&gt;可以大大加快数据的检索速度，这也是创建索引的最主要的原因&lt;/li&gt;
+&lt;li&gt;可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义&lt;/li&gt;
+&lt;li&gt;在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间&lt;/li&gt;
+&lt;li&gt;通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;索引的缺点&#34;&gt;索引的缺点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加&lt;/li&gt;
+&lt;li&gt;索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大&lt;/li&gt;
+&lt;li&gt;当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;设置索引的原则&#34;&gt;设置索引的原则&lt;/h2&gt;
+
+&lt;h3 id=&#34;应设置索引的情况&#34;&gt;应设置索引的情况&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;较频繁查询的列上创建索引&lt;/li&gt;
+&lt;li&gt;在经常需要根据范围进行搜索的列上创建索引&lt;/li&gt;
+&lt;li&gt;在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构&lt;/li&gt;
+&lt;li&gt;在经常用在连接的列上&lt;/li&gt;
+&lt;li&gt;在经常需要排序的列上创建索引，因为索引已经排序&lt;/li&gt;
+&lt;li&gt;在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;不应设置索引的情况&#34;&gt;不应设置索引的情况&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在查询中很少使用或者参考的列不应该创建索引&lt;/li&gt;
+&lt;li&gt;选择性很差的列，即这些列取值很少&lt;/li&gt;
+&lt;li&gt;当修改性能远远大于检索性能时，不应该创建索引&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;索引分类&#34;&gt;索引分类：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;唯一索引：唯一索引不允许两行具有相同的索引值&lt;/li&gt;
+&lt;li&gt;主键索引：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空&lt;/li&gt;
+&lt;li&gt;聚集索引(Clustered)：表中各行的物理顺序与索引顺序相同，每个表只能有一个&lt;/li&gt;
+&lt;li&gt;非聚集索引(Non-clustered)：非聚集索引指定表种记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;索引类型&#34;&gt;索引类型&lt;/h3&gt;
+
+&lt;h4 id=&#34;顺序索引&#34;&gt;顺序索引&lt;/h4&gt;
+
+&lt;p&gt;使用B树或者B+树作为其索引结构&lt;/p&gt;
+
+&lt;h4 id=&#34;散列索引&#34;&gt;散列索引&lt;/h4&gt;
+
+&lt;p&gt;哈希索引（hash index）基于哈希表实现。对于每一行数据，存储引擎都会对所有的索引列计算一个哈希码（hash code），哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。对于hash相同的，采用链表的方式解决冲突。&lt;/p&gt;
+
+&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;访问哈希索引的数据非常快&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;限制：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行&lt;/li&gt;
+&lt;li&gt;哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序&lt;/li&gt;
+&lt;li&gt;哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序&lt;/li&gt;
+&lt;li&gt;哈希索引只支持等值比较查询，包括=、IN()、&amp;lt;&amp;gt;，也不支持任何范围查询&lt;/li&gt;
+&lt;li&gt;当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;散列索引与顺序索引的区别&#34;&gt;散列索引与顺序索引的区别&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Hash索引&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;顺序索引&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;无序&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;有序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;只支持点查询&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;支持点查询和范围查询&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;存储过程&#34;&gt;存储过程&lt;/h1&gt;
+
+&lt;p&gt;存储过程是一个预编译的SQL语句。&lt;/p&gt;
+
+&lt;h2 id=&#34;存储过程优点&#34;&gt;存储过程优点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;存储过程是预编译过的，执行效率高&lt;/li&gt;
+&lt;li&gt;存储过程的代码直接存放于数据库中，通过存储过程名直接调用，减少网络通讯&lt;/li&gt;
+&lt;li&gt;安全性高，执行存储过程需要有一定权限的用户&lt;/li&gt;
+&lt;li&gt;存储过程可以重复使用，可减少数据库开发人员的工作量&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;存储过程缺点&#34;&gt;存储过程缺点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每个数据库的存储过程语法几乎都不一样，十分难以维护&lt;/li&gt;
+&lt;li&gt;业务逻辑放在数据库上，难以迭代&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;存储过程和函数的区别&#34;&gt;存储过程和函数的区别&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;存储过程&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;函数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;用途&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;用于在数据库中完成特定的操作或者任务&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;用于特定的数据&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;声明&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;程序头部声明用procedure&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;程序头部声明用function&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;返回类型&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;程序头部声明时不需描述返回类型&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;程序头部声明时要描述返回类型&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;参数模式&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;可以使用in/out/in out 三种模式的参数&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;可以使用in/out/in out 三种模式的参数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;能否独立执行&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;可作为一个独立的语句来执行&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;不能独立执行，必须作为表达式的一部分调用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;调用&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;SQL语句(DML 或SELECT)中不可调用存储过程&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;SQL语句(DML 或SELECT)中可以调用函数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;触发器&#34;&gt;触发器&lt;/h2&gt;
+
+&lt;p&gt;触发器是一种特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。&lt;/p&gt;
+
+&lt;h1 id=&#34;join&#34;&gt;join&lt;/h1&gt;
+
+&lt;h2 id=&#34;内连接&#34;&gt;内连接&lt;/h2&gt;
+
+&lt;p&gt;在每个表中找出符合条件的共有记录&lt;/p&gt;
+
+&lt;h2 id=&#34;外连接&#34;&gt;外连接&lt;/h2&gt;
+
+&lt;h3 id=&#34;左连接&#34;&gt;左连接&lt;/h3&gt;
+
+&lt;p&gt;根据左表的记录，在被连接的右表中找出符合条件的记录与之匹配，如果找不到与左表匹配的，用null表示&lt;/p&gt;
+
+&lt;h3 id=&#34;右连接&#34;&gt;右连接&lt;/h3&gt;
+
+&lt;p&gt;根据右表的记录，在被连接的左表中找出符合条件的记录与之匹配，如果找不到匹配的，用null填充&lt;/p&gt;
+
+&lt;h3 id=&#34;全外连接&#34;&gt;全外连接&lt;/h3&gt;
+
+&lt;p&gt;返回左表和右表中的所有记录。若某一行再另一个表中没有与之匹配的，用null表示（结果是左连接和右连接的并集）&lt;/p&gt;
+
+&lt;h2 id=&#34;笛卡尔积交叉连接&#34;&gt;笛卡尔积（交叉连接）&lt;/h2&gt;
+
+&lt;p&gt;将两个表中的每条记录都进行组合。不带WHERE条件子句，它将会返回被连接的两个表的笛卡尔积，返回结果的行数等于两个表行数的乘积，如果带where，返回或显示的是匹配的行数（先生成笛卡尔积，再根据查询条件进行筛选）。&lt;/p&gt;
+
+&lt;h1 id=&#34;事务&#34;&gt;事务&lt;/h1&gt;
+
+&lt;p&gt;事务是并发控制的基本单元。事务是一个操作序列，由一条或多条SQL语句组成，这些操作要么都执行成功，要么都不执行，它是一个不可分割的工作单位。&lt;/p&gt;
+
+&lt;h2 id=&#34;事务的acid特性&#34;&gt;事务的ACID特性：&lt;/h2&gt;
+
+&lt;h3 id=&#34;原子性atomicity&#34;&gt;原子性（Atomicity）&lt;/h3&gt;
+
+&lt;p&gt;事务是不可分割的工作单位。只有事务中的全部操作执行成功，事务才算执行成功。若任何操作失败，则该事务执行失败，数据库的状态必须回滚到事务开始前的状态。&lt;/p&gt;
+
+&lt;h3 id=&#34;一致性consistency&#34;&gt;一致性（Consistency）&lt;/h3&gt;
+
+&lt;p&gt;事务应保证数据库只能从一个一致状态转移到另一个一致状态。一致状态是指数据库中的数据应满足完整性约束。即事务开始前和结束后数据库数据的完整性没有被破坏。&lt;/p&gt;
+
+&lt;h3 id=&#34;隔离性isolation&#34;&gt;隔离性（Isolation）&lt;/h3&gt;
+
+&lt;p&gt;事务的隔离性要求每个事务的对象和其它事务的操作对象能相互分离。即该事务提交前对其它事务都不可见，这通常使用锁来实现。多个事务并发执行时，一个事务的执行不应影响其他事务的执行。&lt;/p&gt;
+
+&lt;h3 id=&#34;持久性durability&#34;&gt;持久性（Durability）&lt;/h3&gt;
+
+&lt;p&gt;事务一旦提交其结果就是永久性的。即数据写入到了数据库中，即使宕机数据也不会丢失。&lt;/p&gt;
+
+&lt;h2 id=&#34;可串行化&#34;&gt;可串行化&lt;/h2&gt;
+
+&lt;p&gt;可串行化指事务并行执行的结果与某个顺序的串行执行结果相同。可串行化&lt;/p&gt;
+
+&lt;h3 id=&#34;先后顺序图串行化图&#34;&gt;先后顺序图/串行化图&lt;/h3&gt;
+
+&lt;p&gt;对于调度S，先后顺序图是一个有向图&lt;span  class=&#34;math&#34;&gt;\(G = (N, E)\)&lt;/span&gt;，由节点集合&lt;span  class=&#34;math&#34;&gt;\(N\)&lt;/span&gt;和有向边集合&lt;span  class=&#34;math&#34;&gt;\(E\)&lt;/span&gt;构成，构建方式如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;为每个事务创建一个节点&lt;/li&gt;
+&lt;li&gt;如果事务&lt;span  class=&#34;math&#34;&gt;\(T_i\)&lt;/span&gt;读取了&lt;span  class=&#34;math&#34;&gt;\(T_j\)&lt;/span&gt;已经写操作的数据项，创建一条有向边&lt;span  class=&#34;math&#34;&gt;\(T_j \to T_i\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;如果事务&lt;span  class=&#34;math&#34;&gt;\(T_i\)&lt;/span&gt;对&lt;span  class=&#34;math&#34;&gt;\(T_j\)&lt;/span&gt;已经读取的数据项进行写操作，创建一条有向边&lt;span  class=&#34;math&#34;&gt;\(T_j \to T_i\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;如果事务&lt;span  class=&#34;math&#34;&gt;\(T_i\)&lt;/span&gt;对&lt;span  class=&#34;math&#34;&gt;\(T_j\)&lt;/span&gt;写操作的数据项进行写操作，创建一条有向边&lt;span  class=&#34;math&#34;&gt;\(T_j \to T_i\)&lt;/span&gt;
+如果S的先后顺序图中出现了有向边&lt;span  class=&#34;math&#34;&gt;\(T_i \to T_j\)&lt;/span&gt;，则在任何与之等价的穿行调度&lt;span  class=&#34;math&#34;&gt;\(S&#39;\)&lt;/span&gt;中，&lt;span  class=&#34;math&#34;&gt;\(T_i\)&lt;/span&gt;必须出现在&lt;span  class=&#34;math&#34;&gt;\(T_j\)&lt;/span&gt;的前面。如果先后顺序图中存在环，则该调度不可串行化。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;数据冲突引起的问题&#34;&gt;数据冲突引起的问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;脏读（read uncommitted data）：在&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;提交前，&lt;span  class=&#34;math&#34;&gt;\(T_1\)&lt;/span&gt;读取了&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;已经修改了的数据&lt;/li&gt;
+&lt;li&gt;不可重复读（unreaptable read）：在&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;提交前，&lt;span  class=&#34;math&#34;&gt;\(T_1\)&lt;/span&gt;修改了&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;已经读取的数据，如果&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;再次读取该数据，则发现不同的值&lt;/li&gt;
+&lt;li&gt;更新丢失（overwrite uncommitted data）：在&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;提交前，&lt;span  class=&#34;math&#34;&gt;\(T_1\)&lt;/span&gt;修改了&lt;span  class=&#34;math&#34;&gt;\(T_2\)&lt;/span&gt;已经写的数据。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;事务的隔离级别&#34;&gt;事务的隔离级别&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;read uncommit 读脏数据&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;unreaptable read 不可重复读&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;overwrite uncommitted 更新丢失&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Read uncommited 读未提交&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可能&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Read committed 读已提交&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可能&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Reaptable read 重复读取&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;可能&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Serializable&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不可能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;乐观与悲观&#34;&gt;乐观与悲观&lt;/h2&gt;
+
+&lt;h3 id=&#34;悲观技术&#34;&gt;悲观技术&lt;/h3&gt;
+
+&lt;h4 id=&#34;加锁方法&#34;&gt;加锁方法&lt;/h4&gt;
+
+&lt;p&gt;加锁是并发事务串行化的常用方法。事务必须在开始影响的数据库读/写操作前获声明一个共享的（读）锁或者专用的（写）锁。如果声明互斥锁，锁禁止其他事务修改甚至读取该数据项。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;共享锁：如果事务在一个数据项上加上共享锁，他只能读而不能更新该数据项。&lt;/li&gt;
+&lt;li&gt;互斥锁：如果事务在一个数据项上加上互斥锁，他既能读也能更新该数据项。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;读操作是不冲突的，因此允许多个并发事务获取数据项的共享锁。另一方面，互斥锁赋予事务对该数据项的独占的访问权限，因此其他事务都无法读取或者更新该数据项。&lt;/p&gt;
+
+&lt;h5 id=&#34;两段锁2pl协议&#34;&gt;两段锁（2PL）协议&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事务对一个数据项操作之前，必须先获得对该项的锁&lt;/li&gt;
+&lt;li&gt;一旦事务释放了第一个锁，就不能再获得任何新锁&lt;/li&gt;
+&lt;li&gt;如果允许对锁进行升级，只能再增长阶段进行，且事务必须等待，知道另一个事务释放了该数据项的共享锁。锁的降级只能再缩减阶段进行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;算法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在Transaction开始时，对每个需要访问的数据加锁；如果不能加锁，就等待，直到加锁成功&lt;/li&gt;
+&lt;li&gt;执行Transaction的内容&lt;/li&gt;
+&lt;li&gt;在Transaction commit前，集中进行解锁&lt;/li&gt;
+&lt;li&gt;Commit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;锁的粒度&#34;&gt;锁的粒度&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;意向锁
+
+&lt;ul&gt;
+&lt;li&gt;IS(a)：将对a下面更细粒度的数据元素进行读&lt;/li&gt;
+&lt;li&gt;IX(a)：将对a下面更细粒度的数据元素进行写&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;为了得到S，IS：所有祖先必须为IS或IX&lt;/li&gt;
+&lt;li&gt;为了得到X，IX：所有祖先必须为IX&lt;/li&gt;
+&lt;li&gt;锁兼容性矩阵：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;IS&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;IX&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;S&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;X&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;IS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;IX&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;S&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\checkmark\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;span  class=&#34;math&#34;&gt;\(\times\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;时间戳方法&#34;&gt;时间戳方法&lt;/h4&gt;
+
+&lt;p&gt;在时间戳方法中，较旧的事务（即有较小时间戳的事务），在冲突事件中有较高的优先级。采用时间戳协议，如果一个事务试图读或写一个数据项。只有当该数据项是由一个较旧事务更新时，这次读写才被允许。否则，请求读/写的事务将重新启动，并获得一个新的时间戳。&lt;/p&gt;
+
+&lt;p&gt;每个数据项也有一个读时间戳（其值为最后一个读该数据项事务的时间戳）和一个写时间戳（其值为最后一个写该数据项事务的时间戳）。&lt;/p&gt;
+
+&lt;h5 id=&#34;时间戳排序协议&#34;&gt;时间戳排序协议&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事务&lt;span  class=&#34;math&#34;&gt;\(T\)&lt;/span&gt;发出一个读请求 &lt;span  class=&#34;math&#34;&gt;\(read(x)\)&lt;/span&gt;
+
+&lt;ul&gt;
+&lt;li&gt;若 &lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) &gt; T_{timestamp}\)&lt;/span&gt;，则事务&lt;span  class=&#34;math&#34;&gt;\(T\)&lt;/span&gt;将被回滚，并以一个新的时间戳启动&lt;/li&gt;
+&lt;li&gt;反之，若 &lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) \le T_{timestamp}\)&lt;/span&gt;，则读操作继续，并令&lt;span  class=&#34;math&#34;&gt;\(readTimestamp(x) = T_{timestamp}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;事务T发出一个写请求 write(x)
+
+&lt;ul&gt;
+&lt;li&gt;若&lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) &gt; T_{timestamp}\)&lt;/span&gt;，则事务&lt;span  class=&#34;math&#34;&gt;\(T\)&lt;/span&gt;将被回滚，并以一个新的时间戳启动&lt;/li&gt;
+&lt;li&gt;若&lt;span  class=&#34;math&#34;&gt;\(readTimestamp(x) &gt; T_{timestamp}\)&lt;/span&gt;，则事务&lt;span  class=&#34;math&#34;&gt;\(T\)&lt;/span&gt;将被回滚，并以一个新的时间戳启动&lt;/li&gt;
+&lt;li&gt;否则，&lt;span  class=&#34;math&#34;&gt;\(readTimestamp(x) \le T_{timestamp}\)&lt;/span&gt; 且 &lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) \le T_{timestamp}\)&lt;/span&gt;，则写操作继续，并令&lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) = T_{timestamp}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;托马斯写规则&#34;&gt;托马斯写规则&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事务T发出一个写请求 write(x)
+
+&lt;ul&gt;
+&lt;li&gt;若&lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) &gt; T_{timestamp}\)&lt;/span&gt;，则写操作被忽略&lt;/li&gt;
+&lt;li&gt;若&lt;span  class=&#34;math&#34;&gt;\(readTimestamp(x) &gt; T_{timestamp}\)&lt;/span&gt;，则事务&lt;span  class=&#34;math&#34;&gt;\(T\)&lt;/span&gt;将被回滚，并以一个新的时间戳启动&lt;/li&gt;
+&lt;li&gt;否则，&lt;span  class=&#34;math&#34;&gt;\(readTimestamp(x) \le T_{timestamp}\)&lt;/span&gt; 且 &lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) \le T_{timestamp}\)&lt;/span&gt;，则写操作继续，并令&lt;span  class=&#34;math&#34;&gt;\(writeTimestamp(x) = T_{timestamp}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;乐观技术&#34;&gt;乐观技术&lt;/h3&gt;
+
+&lt;p&gt;乐观技术基于这样一个假设：冲突是罕见的，去除为保证串行化而对事务的延迟，将会更高效。在事务提交时进行检查，若发生冲突，事务必须被回滚。&lt;/p&gt;
+
+&lt;p&gt;事务执行分为三个阶段：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;读&lt;/strong&gt;：事务开始执行，读数据到私有工作区，并在私有工作区上完成事务的处理请求，完成修改操作&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;验证&lt;/strong&gt;：如果事务决定提交，检查事务是否与其它事务冲突
+
+&lt;ul&gt;
+&lt;li&gt;如果存在冲突，那么终止事务，清空私有工作区&lt;/li&gt;
+&lt;li&gt;重试事务&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;写&lt;/strong&gt;：验证通过，没有发现冲突，那么把私有工作区的修改复制到数据库公共数据中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;确认阶段检查事务的读写操作是否发生了冲突。每个事务T开始时分配一个时间戳start(T)，事务的验证阶段分配时间戳validate(T)，事务的结束阶段finish(T)。通过确认检查，需满足以下条件之一：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事务T开始前，所有较旧时间戳的事务S均已完成，即start(T) &amp;lt; finish(S)&lt;/li&gt;
+&lt;li&gt;若事务T在一个较旧的事务S结束前开始，则：
+
+&lt;ul&gt;
+&lt;li&gt;S所写数据不是当前事务T读取的数据，（保证较旧事务的写不被当前事务读）且&lt;/li&gt;
+&lt;li&gt;当前事务T进入验证阶段前，所有较旧事务S已完成其写阶段，即validate(T) &amp;lt; finish(S) &amp;lt; validate(T)。（保证写是串行的）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;数据库的恢复&#34;&gt;数据库的恢复&lt;/h1&gt;
+
+&lt;p&gt;采用如下机制进行恢复：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;备份机制：周期地对数据库进行备份&lt;/li&gt;
+&lt;li&gt;日志机制：跟踪当前事务的状态与数据库的改变&lt;/li&gt;
+&lt;li&gt;检查点机制：数据库与事务日志文件的同步点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;wal-写前日志&#34;&gt;WAL 写前日志&lt;/h2&gt;
+
+&lt;h3 id=&#34;日志文件&#34;&gt;日志文件&lt;/h3&gt;
+
+&lt;p&gt;日志文件包括下列数据：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事务记录
+
+&lt;ul&gt;
+&lt;li&gt;事务标识符&lt;/li&gt;
+&lt;li&gt;日志记录类型（事务开始，插入，删除，更新，撤销，提交）&lt;/li&gt;
+&lt;li&gt;所操作数据项的标识符（更新，插入，删除）&lt;/li&gt;
+&lt;li&gt;数据项的前像&lt;/li&gt;
+&lt;li&gt;数据项的后像&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;检查点记录&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果系统发生故障，恢复过程使用日志对事物进行撤销或重做：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果“事务开始”和“事务提交”都出现在日志中，使用日志记录来重做，按日志写入更新后字段的后像&lt;/li&gt;
+&lt;li&gt;如果“事务开始”出现在日志文件中，但是“事务提交”未出现，则进行撤销，根据日志文件中数据项的前像，是数据库恢复到事务开始前的状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;三个范式&#34;&gt;三个范式&lt;/h1&gt;
+
+&lt;h2 id=&#34;第一范式&#34;&gt;第一范式&lt;/h2&gt;
+
+&lt;p&gt;所有属性都是不可分的基本数据项&lt;/p&gt;
+
+&lt;h2 id=&#34;第二范式&#34;&gt;第二范式&lt;/h2&gt;
+
+&lt;p&gt;每个表有且仅有一个数据元素为主键，其他数据元素与主键一一对应&lt;/p&gt;
+
+&lt;h2 id=&#34;第三范式&#34;&gt;第三范式&lt;/h2&gt;
+
+&lt;p&gt;指表中的所有数据元素不但要能唯一地被主键所标识，而且他们之间还必须相互独立，不存在其他的函数关系。&lt;/p&gt;
+
+&lt;h1 id=&#34;nosql&#34;&gt;No-SQL&lt;/h1&gt;
+</description>
+    </item>
     
     <item>
       <title>计算机网络基础</title>
@@ -47,7 +575,7 @@
 &lt;li&gt;差错控制：将有差错的物理线路改进为对网络层来说无差错的数据链路，采用奇偶校检码和循环冗余编码（CRC）&lt;/li&gt;
 &lt;li&gt;透明传输：使得不论什么样的比特组合都可以在数据链路层传输&lt;/li&gt;
 &lt;li&gt;物理寻址：向每个帧的头部加入了源MAC地址和目的MAC地址&lt;/li&gt;
-&lt;li&gt;访问控制：当单个线路被多个设备共享时，数据链路层的MAC子层帮助于确定哪个设备在给定时间控制信道&lt;/li&gt;
+&lt;li&gt;访问控制：当单个线路被多个设备共享时，数据链路层的MAC子层用于帮助确定哪个设备在给定时间控制信道&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;设备：网桥，交换机&lt;/li&gt;
 &lt;li&gt;协议：HDLC协议，PPP协议，ARP&lt;/li&gt;
@@ -120,7 +648,7 @@
 &lt;h4 id=&#34;特点&#34;&gt;特点&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;基于Bellham-Ford（距离矢量）算法&lt;/li&gt;
+&lt;li&gt;基于Bellman-Ford（距离矢量）算法&lt;/li&gt;
 &lt;li&gt;RIP使用跳数来衡量距离，每一条链路的成本为1，不考虑带宽，时延等因素&lt;/li&gt;
 &lt;li&gt;跳数为&lt;strong&gt;16&lt;/strong&gt;，表示该网络&lt;strong&gt;不可达&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;使用UDP报文进行路由信息的交换&lt;/li&gt;
@@ -149,12 +677,12 @@
 
 &lt;h3 id=&#34;ospf协议&#34;&gt;OSPF协议&lt;/h3&gt;
 
-&lt;p&gt;开放最短路径优先（OSPF）是链路状态路由协议，用于使用Dijkstra算法找到源路由器和目的地路由器之间的最佳路径。链路状态路由协议是使用触发更新的概念的协议。即，如果在学习的路由表中观察到变化，则仅触发更新，而不像路由表所在的距离矢量路由协议在一段时间内交换。&lt;/p&gt;
+&lt;p&gt;开放最短路径优先（OSPF）是链路状态路由协议，使用Dijkstra算法找到源路由器和目的地路由器之间的最佳路径。链路状态路由协议是使用触发更新的概念的协议。即，如果在学习的路由表中观察到变化，则触发更新，而不像距离矢量路由协议在一段时间内交换。&lt;/p&gt;
 
 &lt;h4 id=&#34;特点-1&#34;&gt;特点&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;与大多数路由协议不同（参考BGP和RIP的工作过程），本协议不依赖于传输层协议（如TCP、UDP）提供数据传输、错误检测与恢复服务，数据包直接封装在网际协议（协议号89）内传输&lt;/li&gt;
+&lt;li&gt;与大多数路由协议不同（参考BGP和RIP的工作过程），本协议不依赖于传输层协议（如TCP、UDP）提供数据传输、错误检测与恢复服务，数据包直接封装在IP协议（协议号89）内传输&lt;/li&gt;
 &lt;li&gt;使用Dijkstra算法计算出到达每一网络的最短路径&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -196,7 +724,7 @@
 &lt;h3 id=&#34;超时重传&#34;&gt;超时重传&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;发送端根据发出的报文段在规定的时间内是否收到确认，从而来判断该报文段是否丢失或传输出错。&lt;/li&gt;
+&lt;li&gt;发送端根据发出的报文段在规定的时间内是否收到确认，从而来判断该报文段是否丢失或传输出错。超过一定时间未收到确认，则重新发送该报文段&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;tcp流量控制与拥塞控制&#34;&gt;TCP流量控制与拥塞控制&lt;/h2&gt;
@@ -235,7 +763,7 @@
 &lt;h4 id=&#34;拥塞避免算法&#34;&gt;拥塞避免算法&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;当 cwdn &amp;gt;= ssthresh 时，每过一个TRR，拥塞窗口cwnd++&lt;/li&gt;
+&lt;li&gt;当 cwdn &amp;gt;= ssthresh 时，每过一个RTT，拥塞窗口cwnd++&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&#34;超时重传-拥塞发生&#34;&gt;超时重传（拥塞发生）&lt;/h4&gt;
