@@ -9,7 +9,7 @@
   
   
   
-  
+  <link rel="prev" href="https://13ean.github.io/2019/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" />
   <link rel="next" href="https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" />
   <link rel="canonical" href="https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://13ean.github.io/apple-touch-icon.png">
@@ -64,7 +64,7 @@
     "datePublished": "2019-03-26 00:00:00 &#43;0000 UTC",
     "dateModified" : "2019-03-26 00:00:00 &#43;0000 UTC",
     "url" : "https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/",
-    "wordCount" : "300",
+    "wordCount" : "365",
     "keywords" : [ "network", "13ean&#39;s Github Page"]
 }
 </script>
@@ -153,9 +153,7 @@
           
           
 
-          
-
-<h1 id="计算机网络模型">计算机网络模型</h1>
+          <h1 id="计算机网络模型">计算机网络模型</h1>
 
 <h2 id="osi-七层模型">OSI 七层模型</h2>
 
@@ -167,7 +165,7 @@
 <li>功能作用：确定与传输媒介的接口的一些特性，电气，机械，功能，规程特性</li>
 <li>设备：中继器，集线器</li>
 <li>协议：RJ45等
-<br /></li>
+<br></li>
 </ul></li>
 
 <li><p>数据链路层</p>
@@ -237,7 +235,7 @@
 </ul></li>
 </ol>
 
-<h2 id="tcp-ip模型">TCP/IP模型</h2>
+<h2 id="tcpip模型">TCP/IP模型</h2>
 
 <ol>
 <li>网络接口层</li>
@@ -366,7 +364,7 @@
 <li>初始时，设置拥塞窗口cwnd=1，表示可以传输一个最大的报文段MSS的数据，设置慢启动门限初值ssthresh</li>
 <li>当cwnd &lt; ssthresh 时，每收到新报文的ACK，则拥塞窗口cwnd++，因此每过一个RTT，则cwnd*2，呈指数增长</li>
 <li>当cwnd &gt;= ssthresh 时，改用拥塞避免算法
-<br /></li>
+<br></li>
 </ul>
 
 <h4 id="拥塞避免算法">拥塞避免算法</h4>
@@ -375,7 +373,7 @@
 <li>当 cwdn &gt;= ssthresh 时，每过一个RTT，拥塞窗口cwnd++</li>
 </ul>
 
-<h4 id="超时重传-拥塞发生">超时重传（拥塞发生）</h4>
+<h4 id="超时重传拥塞发生">超时重传（拥塞发生）</h4>
 
 <ul>
 <li>将ssthresh置为拥塞发生时拥塞窗口cwnd大小的一半</li>
@@ -409,28 +407,37 @@
 <h3 id="tcp的建立过程">TCP的建立过程</h3>
 
 <ul>
-<li>首先client发送连接请求，发送TCP报文，其中SYN=1， seq=x，然后clien进入SYN_SEND状态</li>
-<li>server接收到连接请求，发送TCP报文，进行确认，其中SYN=1，ACK=1，seq=y，ack=x+1，然后server进入SYN_RCVD状态</li>
-<li>clieten收到server发送过来的报文后，进行确认，其中ACK=1，seq=x+1，ack=y+1，然后client进入ESTABLISHED状态，server接收到该报文后也进入ESTABLISHED状态</li>
+<li>首先client发送连接请求，发送TCP报文，其中SYN=1， seq=x，然后clien进入<strong>SYN_SEND</strong>状态</li>
+<li>server接收到连接请求，发送TCP报文，进行确认，其中SYN=1，ACK=1，seq=y，ack=x+1，然后server进入<strong>SYN_RCVD</strong>状态</li>
+<li>clieten收到server发送过来的报文后，进行确认，其中ACK=1，seq=x+1，ack=y+1，然后client进入<strong>ESTABLISHED</strong>状态</li>
+<li>server接收到该报文后也进入<strong>ESTABLISHED</strong>状态</li>
 </ul>
 
 <h3 id="tcp释放连接过程">TCP释放连接过程</h3>
 
 <ul>
-<li>A发送断开连接请求，发送TCP报文，其中FIN=1，seq=x，然后A进入FIN_WAIT_1状态</li>
-<li>B接收到A发送过来的断开请求后，发送TCP报文，其中ACK=1，seq=y,ack=x+1，然后B进入CLOSE_WAIT状态，此时B仍然可以向发起者发送数据</li>
-<li>B数据发送完毕后，发送断开连接请求，发送TCP报文，其中FIN=1，seq=y&rsquo;，然后B进入LAST_ACK状态</li>
-<li>A接收到B的断连请求后，发送确认包，其中ACK=1，ack=y&rsquo;+1，然后A进入TIME_WAIR状态，然后B接收到该确认包后关闭连接，进入CLOSED状态</li>
-<li>A在等待一定时间（两个最大段生命周期 2MSL）后，进入CLOSED状态</li>
+<li>A发送断开连接请求，发送TCP报文，其中FIN=1，seq=x，然后A进入<strong>FIN_WAIT_1</strong>状态</li>
+<li>B接收到A发送过来的断开请求后，发送TCP报文，其中ACK=1，seq=y,ack=x+1，然后B进入<strong>CLOSE_WAIT</strong>状态，此时B仍然可以向A发送数据。</li>
+<li>A接收到B的确认后，进入<strong>FIN_WAIT_2</strong>状态，A仍可接收数据</li>
+<li>B数据发送完毕后，发送断开连接请求，发送TCP报文，其中FIN=1，seq=y'，然后B进入<strong>LAST_ACK</strong>状态</li>
+<li>A接收到B的断连请求后，发送确认包，其中ACK=1，ack=y'+1，然后A进入<strong>TIME_WAIT</strong>状态，然后B接收到该确认包后关闭连接，进入<strong>CLOSED</strong>状态</li>
+<li>A在等待一定时间（两个最大段生命周期 2MSL）后，进入<strong>CLOSED</strong>状态</li>
 </ul>
 
 <h3 id="为何是三次握手">为何是三次握手？</h3>
 
-<p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致。而要解决这个问题, 无论你在消息中包含什么信息, 三次通信是理论上的最小值. 所以三次握手不是TCP本身的要求, 而是为了满足&rdquo;在不可靠信道上可靠地传输信息&rdquo;这一需求所导致的。</p>
+<p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致。而要解决这个问题, 无论你在消息中包含什么信息，三次通信是理论上的最小值。所以三次握手不是TCP本身的要求, 而是为了满足“在不可靠信道上可靠地传输信息”这一需求所导致的。</p>
 
 <h3 id="为何四次挥手">为何四次挥手？</h3>
 
 <p>因此TCP是全双工通信的，需要双方分别断开连接。第一次挥手表示A数据发送完毕，请求断开连接；第二次挥手表示B同意A断开连接，B仍可向A发送数据，A仍可接收B发送的数据；第三次挥手表示B数据发送完毕，请求断开连接；第四次挥手表示A同意B断开连接。然后A在等待两个最大生命周期后，连接中断，以防B未接收到A发送的确认。</p>
+
+<h3 id="为何timewair等待2msl">为何TIME_WAIR等待2MSL？</h3>
+
+<ul>
+<li>为了保证客户端发送的最后一个 ACK 报文能够到达服务端。若未成功到达，则服务端超时重传 FIN+ACK 报文段，客户端再重传 ACK，并重新计时。</li>
+<li>防止已失效的连接请求报文段出现在本连接中。TIME_WAIT 持续 2MSL 可使本连接持续的时间内所产生的所有报文段都从网络中消失，这样可使下次连接中不会出现旧的连接报文段。</li>
+</ul>
 
 <h1 id="udp协议">UDP协议</h1>
 
@@ -489,8 +496,8 @@
 <li>当客户机提出查询请求时，首先在本地计算机的缓存中查找，如果在本地无法查询信息，则将查询请求发给本地DNS服务器</li>
 <li>当本地DNS服务器接到查询后，首先在该服务器管理的区域的记录中查找，如果找到该记录，则进行此记录进行解析，如果没有区域信息可以满足查询要求，服务器在本地缓存中查找</li>
 <li>如果本地服务器不能在本地找到客户机查询的信息，将客户机请求发送到根域名DNS服务器</li>
-<li>根名称服务器包含关于顶级域的至少一个服务器的信息。然后将查询发送到相应的顶级域服务器。</li>
-<li>如果顶级域名服务器包含映射，则将响应将发送回根服务器，然后发送回主机的本地服务器。</li>
+<li>根名称服务器包含关于顶级域的至少一个服务器的信息。然后将查询发送到相应的顶级域服务器</li>
+<li>如果顶级域名服务器包含映射，则将响应将发送回根服务器，然后发送回主机的本地服务器</li>
 <li>若顶级域域名服务器不包含映射，则应包含目的主机的本地DNS服务器的IP地址</li>
 <li>目的主机的本地DNS服务器知道目的主机的IP地址，然后将发送回顶级域名服务器，然后发送给根域名服务器，然后发送到主机的本地域名服务器，最后到主机</li>
 </ul>
@@ -506,7 +513,7 @@
 <li>本地DNS服务器向目的主机的本地DNS服务器查询，得到目的主机的IP地址</li>
 </ul>
 
-<h1 id="http-https">HTTP/HTTPS</h1>
+<h1 id="httphttps">HTTP/HTTPS</h1>
 
 <h2 id="两者的不同">两者的不同</h2>
 
@@ -539,12 +546,6 @@
 </tr>
 
 <tr>
-<td align="left">网络层级</td>
-<td align="left">工作在应用层</td>
-<td align="left">工作在传输层</td>
-</tr>
-
-<tr>
 <td align="left">加密</td>
 <td align="left">未加密，明文传输</td>
 <td align="left">加密</td>
@@ -557,6 +558,132 @@
 </tr>
 </tbody>
 </table>
+
+<h2 id="短连接长连接">短连接/长连接</h2>
+
+<p>HTTP的长连接和短连接本质上是TCP长连接和短连接。</p>
+
+<h3 id="短连接">短连接</h3>
+
+<p>在HTTP/1.0中，默认使用的是短连接。也就是说，浏览器和服务器每进行一次HTTP操作，就建立一次连接，但任务结束就中断连接。如果客户端浏览器访问的某个HTML或其他类型的 Web页中包含有其他的Web资源，如JavaScript文件、图像文件、CSS文件等；当浏览器每遇到这样一个Web资源，就会建立一个HTTP会话。</p>
+
+<h3 id="长连接">长连接</h3>
+
+<p>从 HTTP/1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头有加入以下代码：</p>
+
+<pre><code>Connection: keep-alive
+</code></pre>
+
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间。</p>
+
+<h2 id="http-请求">HTTP 请求</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">请求类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">GET</td>
+<td align="left">请求指定的页面信息，并返回实体主体</td>
+</tr>
+
+<tr>
+<td align="left">HEAD</td>
+<td align="left">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+
+<tr>
+<td align="left">PUT</td>
+<td align="left">向指定资源位置上传其最新内容</td>
+</tr>
+
+<tr>
+<td align="left">POST</td>
+<td align="left">向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改</td>
+</tr>
+
+<tr>
+<td align="left">DELETE</td>
+<td align="left">请求服务器删除指定的资源</td>
+</tr>
+
+<tr>
+<td align="left">CONNECT</td>
+<td align="left">HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</td>
+</tr>
+
+<tr>
+<td align="left">OPTIONS</td>
+<td align="left">允许客户端查看服务器的性能</td>
+</tr>
+
+<tr>
+<td align="left">TRACE</td>
+<td align="left">回显服务器收到的请求，主要用于测试或诊断</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="http状态码">HTTP状态码</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">状态码</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">200</td>
+<td align="left">请求成功</td>
+</tr>
+
+<tr>
+<td align="left">301</td>
+<td align="left">资源被永久转移到其他url</td>
+</tr>
+
+<tr>
+<td align="left">404</td>
+<td align="left">请求的资源不存在</td>
+</tr>
+
+<tr>
+<td align="left">500</td>
+<td align="left">内部服务器错误</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="https-通信过程">HTTPS 通信过程</h2>
+
+<p>HTTPS为了兼顾安全与效率，同时使用了对称加密和非对称加密。数据是被对称加密传输的，对称加密过程需要客户端的一个密钥，为了确保能把该密钥安全传输到服务器端，采用非对称加密对该密钥进行加密传输，总的来说，对数据进行对称加密，对称加密所要使用的密钥通过非对称加密传输。</p>
+
+<p>HTTPS在传输的过程中会涉及到三个密钥：</p>
+
+<ul>
+<li>服务器端的公钥和私钥，用来进行非对称加密</li>
+<li>客户端生成的随机密钥，用来进行对称加密</li>
+</ul>
+
+<p>一个HTTPS请求实际上包含了两次HTTP传输，可以细分为以下几步：</p>
+
+<ul>
+<li>客户端向服务器发起HTTPS请求，连接到服务器的443端口</li>
+<li>服务器端有一个密钥对，即公钥和私钥，是用来进行非对称加密使用的，服务器端保存着私钥，服务器将自己的公钥发送给客户端</li>
+<li>客户端收到服务器端的公钥之后，验证服务器发送的数字证书的合法性。若合格，那么客户端会生成一个随机值，这个随机值就是用于进行对称加密的密钥，我们将该密钥称之为client key，即客户端密钥。然后用服务器的公钥对客户端密钥进行非对称加密，这样客户端密钥就变成密文了，至此，HTTPS中的第一次HTTP请求结束</li>
+<li>客户端会发起HTTPS中的第二个HTTP请求，将加密之后的客户端密钥发送给服务器</li>
+<li>服务器接收到客户端发来的密文之后，会用自己的私钥对其进行非对称解密，解密之后的明文就是客户端密钥，然后用客户端密钥对数据进行对称加密</li>
+<li>服务器将加密后的密文发送给客户端</li>
+<li>客户端收到服务器发送来的密文，用客户端密钥对其进行对称解密，得到服务器发送的数据</li>
+</ul>
 
 <h1 id="常见问题">常见问题</h1>
 
@@ -653,7 +780,7 @@
 <li><p>网络层比较数据包中的目的IP，然后拆除网络成封装，上传到传输层，确认，排序， 重组，然后上交到应用层</p></li>
 </ul>
 
-<h2 id="当在浏览器中输入一个url时发生了什么-请逐步地-尽可能详细的描述">当在浏览器中输入一个url时发生了什么？请逐步地，尽可能详细的描述。</h2>
+<h2 id="当在浏览器中输入一个url时发生了什么请逐步地尽可能详细的描述">当在浏览器中输入一个url时发生了什么？请逐步地，尽可能详细的描述。</h2>
 
 <h3 id="客户端构建并发送请求">客户端构建并发送请求</h3>
 
@@ -744,6 +871,8 @@
     </div>
 
     <div class="post-nav">
+        
+        <a href="https://13ean.github.io/2019/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="操作系统"><i class="iconfont icon-left"></i>&nbsp;操作系统</a>
          
         
         <a href="https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="next" rel="next" title="数据库系统">数据库系统&nbsp;<i class="iconfont icon-right"></i></a>

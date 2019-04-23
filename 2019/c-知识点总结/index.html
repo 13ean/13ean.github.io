@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="13ean">
+  
+  
+  
+  <link rel="prev" href="https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" />
+  
+  <link rel="canonical" href="https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://13ean.github.io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://13ean.github.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://13ean.github.io/favicon-16x16.png">
+  <link rel="manifest" href="https://13ean.github.io/site.webmanifest">
+  <link rel="mask-icon" href="https://13ean.github.io/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           C&#43;&#43; 知识点总结 | 13ean&#39;s Github Page
+       
+  </title>
+  <meta name="title" content="C&#43;&#43; 知识点总结 | 13ean&#39;s Github Page">
+    
+  
+  <link rel="stylesheet" href="https://13ean.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="https://13ean.github.io/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://13ean.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "C&#43;&#43; 知识点总结",
+    "headline" : "C&#43;&#43; 知识点总结",
+    "description" : "const 定义常量 指针使用const  指针本身是常量：int * const ptr; 指针指向的内容是常量：const int *ptr;或int const *ptr; 指针本身和指针指向内容均为常量：const int * const ptr;  函数使用const  const修饰函数参数 const修饰函数返回值  类中使用const 常成员变量  const修饰类的成员函数，表示成员常量，不能被修改，同时它只能在初始化列表中赋值  常成员函数  const修饰类的成员函数，则该成员函数不能修改类中任何非const成员函数。一般写在函数的最后来修饰。 对于const类对象/指针/引用，只能调用类的const成员函数，因此，const修饰成员函数的最重要作用就是限制对于const对象的使用 const成员函数不被允许修改它所在对象的任何一个数据成员 const成员函数能够访问对象的const成员，而其他成员函数不可以  const修饰类对象  const修饰类对象表示该对象为常量对象，其中的任何成员都不能被修改 const修饰的对象，该对象的任何非const成员函数都不能被调用  const 常量与宏常量     const 常量 宏常量     处理阶段 编译阶段 预处理阶段进行文本替换   数据类型 有数据类型，编译器可进行类型安全检查 无数据类型，仅进行文本替换   存储方式 在data区分配内存，只有一份拷贝 仅展开，有多少展开多少，因此有多份拷贝   空间占用 只有一份拷贝，节省空间 多份拷贝    static 面向过程的static 静态全局变量  已初始化的在data区中分配内存； 未经初始化的静态全局变量会被初始化为0（而自动变量的值是随机的，除非被显式初始化），存储在bss区 改变了全局变量的链接属性为内部链接，只在该静态全局变量的整个个文件中都可见，而文件之外不可见  静态局部变量  在data区分配内存 静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化 它始终驻留在全局数据区，直到程序运行结束。但其作用域为局部作用域  静态函数  将函数的链接属性变为内部链接，只在其声明的文件中可见，其他文件中不可见  面向对象的static 静态数据成员  每个类只有一个拷贝，不属于特定类对象 存储在data区，因此要在定义时分配内存空间，因此不能再类声明中定义 同全局变量相比，使用静态数据成员有两个优势：  静态数据成员没有进入程序的全局名字空间，因此不存在与程序中其它全局名字冲突的可能性 可以实现信息隐藏。静态数据成员可以是private成员，而全局变量不能   静态成员函数  静态成员函数由于不是与任何的对象相联系，因此它不具有this指针 无法访问类的非静态数据成员和非静态成员函数 出现在类体外的函数定义不能指定关键字static 静态成员函数不能用 const 修饰。因为const成员函数是对该成员函数所具有的 this 指针用 const 来修饰，而静态成员函数不具有 this 指针  sizeof  sizeof计算的是在栈中分配的内存大小 sizeof不计算static变量占的内存 操作数是指针时，返回指针所占内存大小 操作数是数组时，其结果是数组的总字节数 操作数是具体的字符串或数值时，会自动根据其具体类型来进行计算 操作数是联合类型时，sizeof是其最大字节成员的字节数 操作数是结构类型时，sizeof是其成员类型的总字节数，包括补充字节在内 sizeof操作符不能用于函数类型，不完全类型或位字段，不完全类型指具有未知存储大小的数据类型，如未知存储大小的数组类型、未知内容的结构或联合类型、void类型等 当操作数是一个表达式时，不会对表达式求值  内存对齐  第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组，结构体等）的整数倍开始(比如int在32位机为4字节, 则要从4的整数倍地址开始存储)，基本类型不包括struct/class/uinon 结构体作为成员：如果一个结构里有某些结构体成员,则结构体成员要从其内部&quot;最宽基本类型成员&quot;的整数倍地址开始存储 结构体内所有数据成员各自内存对齐后，结构体本身还要进行一次内存对齐，保证整个结构体占用内存大小是结构体内最大数据成员的最小整数倍 有效对齐值=min{自身对齐值，当前指定的pack值}。  volatile  volatile声明的变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等，编译器对访问该变量的代码就不再进行优化 用volatile关键字声明的变量每一次被访问时，执行部件都会从该变量相应的内存单元中取值 没有用volatile关键字声明的变量在被访问的时候可能直接从cpu的寄存器中取值  explicit 在C++中，explicit关键字用来修饰类的构造函数，被修饰的构造函数的类，不能发生相应的隐式类型转换，只能以显示的方式进行类型转换。",
+    "inLanguage" : "zh-CN",
+    "author" : "13ean",
+    "creator" : "13ean",
+    "publisher": "13ean",
+    "accountablePerson" : "13ean",
+    "copyrightHolder" : "13ean",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-04-01 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-04-01 00:00:00 &#43;0000 UTC",
+    "url" : "https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/",
+    "wordCount" : "979",
+    "keywords" : [ "C&#43;&#43;","interview", "13ean&#39;s Github Page"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://13ean.github.io">13ean&#39;s Github Page</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="https://13ean.github.io/" title="">13ean</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://13ean.github.io">13ean&#39;s Github Page</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="https://13ean.github.io/" title="">13ean</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="https://13ean.github.io/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">C&#43;&#43; 知识点总结</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://13ean.github.io" rel="author">13ean</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-04-01 itemprop="datePublished">April 1, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="const">const</h1>
+
+<h2 id="定义常量">定义常量</h2>
+
+<h2 id="指针使用const">指针使用const</h2>
+
+<ul>
+<li>指针本身是常量：<code>int * const ptr;</code></li>
+<li>指针指向的内容是常量：<code>const int *ptr;</code>或<code>int const *ptr;</code></li>
+<li>指针本身和指针指向内容均为常量：<code>const int * const ptr;</code></li>
+</ul>
+
+<h2 id="函数使用const">函数使用const</h2>
+
+<ul>
+<li><code>const</code>修饰函数参数</li>
+<li><code>const</code>修饰函数返回值</li>
+</ul>
+
+<h2 id="类中使用const">类中使用const</h2>
+
+<h3 id="常成员变量">常成员变量</h3>
+
+<ul>
+<li><code>const</code>修饰类的成员函数，表示成员常量，不能被修改，同时它只能在初始化列表中赋值</li>
+</ul>
+
+<h3 id="常成员函数">常成员函数</h3>
+
+<ul>
+<li><code>const</code>修饰类的成员函数，则该成员函数不能修改类中任何非<code>const</code>成员函数。一般写在函数的最后来修饰。</li>
+<li>对于<code>const</code>类对象/指针/引用，只能调用类的<code>const</code>成员函数，因此，<code>const</code>修饰成员函数的最重要作用就是限制对于<code>const</code>对象的使用</li>
+<li><code>const</code>成员函数不被允许修改它所在对象的任何一个数据成员</li>
+<li><code>const</code>成员函数能够访问对象的<code>const</code>成员，而其他成员函数不可以</li>
+</ul>
+
+<h3 id="const修饰类对象">const修饰类对象</h3>
+
+<ul>
+<li><code>const</code>修饰类对象表示该对象为常量对象，其中的任何成员都不能被修改</li>
+<li><code>const</code>修饰的对象，该对象的任何非<code>const</code>成员函数都不能被调用</li>
+</ul>
+
+<h2 id="const-常量与宏常量">const 常量与宏常量</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">const 常量</th>
+<th align="left">宏常量</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">处理阶段</td>
+<td align="left">编译阶段</td>
+<td align="left">预处理阶段进行文本替换</td>
+</tr>
+
+<tr>
+<td align="left">数据类型</td>
+<td align="left">有数据类型，编译器可进行类型安全检查</td>
+<td align="left">无数据类型，仅进行文本替换</td>
+</tr>
+
+<tr>
+<td align="left">存储方式</td>
+<td align="left">在data区分配内存，只有一份拷贝</td>
+<td align="left">仅展开，有多少展开多少，因此有多份拷贝</td>
+</tr>
+
+<tr>
+<td align="left">空间占用</td>
+<td align="left">只有一份拷贝，节省空间</td>
+<td align="left">多份拷贝</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="static">static</h1>
+
+<h2 id="面向过程的static">面向过程的static</h2>
+
+<h3 id="静态全局变量">静态全局变量</h3>
+
+<ul>
+<li>已初始化的在data区中分配内存；</li>
+<li>未经初始化的静态全局变量会被初始化为0（而自动变量的值是随机的，除非被显式初始化），存储在bss区</li>
+<li>改变了全局变量的链接属性为内部链接，只在该静态全局变量的整个个文件中都可见，而文件之外不可见</li>
+</ul>
+
+<h3 id="静态局部变量">静态局部变量</h3>
+
+<ul>
+<li>在data区分配内存</li>
+<li>静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化</li>
+<li>它始终驻留在全局数据区，直到程序运行结束。但其作用域为局部作用域</li>
+</ul>
+
+<h3 id="静态函数">静态函数</h3>
+
+<ul>
+<li>将函数的链接属性变为内部链接，只在其声明的文件中可见，其他文件中不可见</li>
+</ul>
+
+<h2 id="面向对象的static">面向对象的static</h2>
+
+<h3 id="静态数据成员">静态数据成员</h3>
+
+<ul>
+<li>每个类只有一个拷贝，不属于特定类对象</li>
+<li>存储在data区，因此要在定义时分配内存空间，因此不能再类声明中定义</li>
+<li>同全局变量相比，使用静态数据成员有两个优势：
+
+<ul>
+<li>静态数据成员没有进入程序的全局名字空间，因此不存在与程序中其它全局名字冲突的可能性</li>
+<li>可以实现信息隐藏。静态数据成员可以是private成员，而全局变量不能</li>
+</ul></li>
+</ul>
+
+<h3 id="静态成员函数">静态成员函数</h3>
+
+<ul>
+<li>静态成员函数由于不是与任何的对象相联系，因此它不具有this指针</li>
+<li>无法访问类的非静态数据成员和非静态成员函数</li>
+<li>出现在类体外的函数定义不能指定关键字<code>static</code></li>
+<li>静态成员函数不能用 <code>const</code> 修饰。因为<code>const</code>成员函数是对该成员函数所具有的 <code>this</code> 指针用 <code>const</code> 来修饰，而静态成员函数不具有 <code>this</code> 指针</li>
+</ul>
+
+<h1 id="sizeof">sizeof</h1>
+
+<ul>
+<li>sizeof计算的是在栈中分配的内存大小</li>
+<li>sizeof不计算static变量占的内存</li>
+<li>操作数是指针时，返回指针所占内存大小</li>
+<li>操作数是数组时，其结果是数组的总字节数</li>
+<li>操作数是具体的字符串或数值时，会自动根据其具体类型来进行计算</li>
+<li>操作数是联合类型时，<code>sizeof</code>是其最大字节成员的字节数</li>
+<li>操作数是结构类型时，<code>sizeof</code>是其成员类型的总字节数，包括补充字节在内</li>
+<li><code>sizeof</code>操作符不能用于函数类型，不完全类型或位字段，不完全类型指具有未知存储大小的数据类型，如未知存储大小的数组类型、未知内容的结构或联合类型、<code>void</code>类型等</li>
+<li>当操作数是一个表达式时，不会对表达式求值</li>
+</ul>
+
+<h2 id="内存对齐">内存对齐</h2>
+
+<ul>
+<li>第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组，结构体等）的整数倍开始(比如int在32位机为4字节, 则要从4的整数倍地址开始存储)，基本类型不包括struct/class/uinon</li>
+<li>结构体作为成员：如果一个结构里有某些结构体成员,则结构体成员要从其内部&quot;最宽基本类型成员&quot;的整数倍地址开始存储</li>
+<li>结构体内所有数据成员各自内存对齐后，结构体本身还要进行一次内存对齐，保证整个结构体占用内存大小是结构体内最大数据成员的最小整数倍</li>
+<li>有效对齐值=min{自身对齐值，当前指定的pack值}。</li>
+</ul>
+
+<h1 id="volatile">volatile</h1>
+
+<ul>
+<li><code>volatile</code>声明的变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等，编译器对访问该变量的代码就不再进行优化</li>
+<li>用<code>volatile</code>关键字声明的变量每一次被访问时，执行部件都会从该变量相应的内存单元中取值</li>
+<li>没有用<code>volatile</code>关键字声明的变量在被访问的时候可能直接从cpu的寄存器中取值</li>
+</ul>
+
+<h1 id="explicit">explicit</h1>
+
+<p>在C++中，explicit关键字用来修饰类的构造函数，被修饰的构造函数的类，不能发生相应的隐式类型转换，只能以显示的方式进行类型转换。</p>
+
+<ul>
+<li>explicit 关键字只能用于类内部的构造函数声明上</li>
+<li>explicit 关键字作用于单个参数的构造函数</li>
+</ul>
+
+<h1 id="指针与数组">指针与数组</h1>
+
+<ul>
+<li>数组要么在全局数据区被创建，要么在栈上被创建；指针可以随时指向任意类型的内存块</li>
+<li>运算符sizeof可以计算出数组的容量（字节数；对于指针得到的是一个指针变量的字节数，而不是p所指的内存容量</li>
+<li>当数组作为函数的参数进行传递时，该数组自动退化为同类型的指针</li>
+</ul>
+
+<h2 id="指针数组和数组指针">指针数组和数组指针</h2>
+
+<ul>
+<li>指针数组是一个数组，数组中存放的数据类型是指针</li>
+<li>数组指针是一个指针，该指针指向数组</li>
+</ul>
+
+<pre><code class="language-c++">int *p1[4]; // 指针数组，p1中的元素为int型指针
+int (*p2)[4]; // 数组指针，p2指向包含4个int型数据的数组
+</code></pre>
+
+<ol>
+<li><code>[]</code>的优先级高于<code>*</code>，因此p1为数组名，数组中存储的内容是int型指针</li>
+<li>p2是一个指针，数组中的元素为int型，p2指向一个包含int型数据的数组</li>
+</ol>
+
+<h1 id="引用">引用</h1>
+
+<h2 id="引用作为函数返回值">引用作为函数返回值</h2>
+
+<ul>
+<li>在内存中不产生被返回值的副本</li>
+<li>不能返回局部变量的引用</li>
+<li>不能返回函数内部new分配的内存的引用</li>
+<li></li>
+</ul>
+
+<h2 id="右值引用">右值引用</h2>
+
+<ul>
+<li>在C++中可以取地址的，有名字的为左值；没名字的，不能取地址的，称右值。</li>
+<li>右值分为两种：
+
+<ul>
+<li>将亡值：将要被移动的对象，如返回右值引用<code>T&amp;&amp;</code>的函数的返回值，<code>std::move()</code>的返回值，或者转换为<code>T&amp;&amp;</code>的类型转换函数的返回值。</li>
+<li>纯右值：非引用返回的临时变量，以及不和对象关联的字面值，类型转换函数的返回值，lambda表达式。</li>
+</ul></li>
+<li><code>std::move()</code>能将左值强转为右值，继而可以通过右值引用来使用这个值。</li>
+</ul>
+
+<p>参考：<a href="https://www.ibm.com/developerworks/cn/aix/library/1307_lisl_c11/index.html">右值引用与转移语义</a></p>
+
+<h2 id="指针与引用">指针与引用</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">指针</th>
+<th align="left">引用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">一个变量，存储的是一个地址</td>
+<td align="left">别名</td>
+</tr>
+
+<tr>
+<td align="left">需解引用</td>
+<td align="left">无需解引用</td>
+</tr>
+
+<tr>
+<td align="left">指针可以为空</td>
+<td align="left">引用不能为空</td>
+</tr>
+
+<tr>
+<td align="left">指针可以有多级</td>
+<td align="left">引用只能一级</td>
+</tr>
+
+<tr>
+<td align="left">指针初始化后可以改变</td>
+<td align="left">引用初始化后不能改变</td>
+</tr>
+
+<tr>
+<td align="left">sizeof指针得到的是指针本身的大小</td>
+<td align="left">sizeof引用得到的是所指对象的大小</td>
+</tr>
+
+<tr>
+<td align="left">指针自增相当于地址自增</td>
+<td align="left">引用自增相当于所指变量自增</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="使用场景">使用场景</h3>
+
+<ol>
+<li>存在不指向任何对象的可能时，应该使用<strong>指针</strong>（在这种情况下，你能够设置指针为空）</li>
+<li>能够在不同的时刻指向不同的对象时，应该使用<strong>指针</strong>（在这种情况下，你能改变指针的指向）</li>
+<li>如果总是指向一个对象并且一旦指向一个对象后就不会改变指向，那么应该使用<strong>引用</strong></li>
+<li>当重载某个操作符时，应该使用<strong>引用</strong></li>
+</ol>
+
+<h1 id="newdeletemallocfree">new/delete、malloc/free</h1>
+
+<h2 id="newdelete">new/delete</h2>
+
+<ul>
+<li>new 有两种形式的new，一种是生成一个对象的<code>operator new</code>，另一个是用于数组的<code>operator new []</code>。同时delete也分普通版本的<code>operator delete</code> 以及数组版的<code>operator delete[]</code></li>
+<li><code>operator new[]</code>会调用<code>malloc()</code>分配4个字节大小+数组大小的内存空间，其中4个字节的内存空间用来存储数组的大小，然后循环调用构造函数</li>
+<li><code>operator delete[]</code>首先读取数组大小，然后循环调用析构函数，再执行<code>free()</code>函数，其中传入的地址是偏移后的地址</li>
+</ul>
+
+<h2 id="mallocfree">malloc/free</h2>
+
+<ul>
+<li>堆内存空间通过内存块的形式组织起来，</li>
+<li>内存块的大致结构：每个块由meta区和数据区组成，meta区记录数据块的元信息（数据区大小、空闲标志位、指针等等），数据区是真实分配的内存区域，并且数据区的第一个字节地址即为malloc返回的地址</li>
+<li>寻找合适的内存块，通常有如下算法：
+
+<ul>
+<li>最佳适应（best fit）</li>
+<li>最先适应（first fit）</li>
+</ul></li>
+<li>如果现有block都不能满足size的要求，则需要在链表最后开辟一个新的block</li>
+<li>free时，首先验证所传入的地址是有效地址，即确实是通过malloc方式分配的数据区首地址</li>
+<li>解决碎片问题：当free某个block时，如果发现它相邻的block也是free的，则将block和相邻block合并。</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">new/delete</th>
+<th align="left">malloc/free</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left">C++ 运算符</td>
+<td align="left">C/C++ 库函数</td>
+</tr>
+
+<tr>
+<td align="left">类型安全</td>
+<td align="left">类型安全的</td>
+<td align="left">不是类型安全的</td>
+</tr>
+
+<tr>
+<td align="left">返回值</td>
+<td align="left">特定类型的指针</td>
+<td align="left">void*</td>
+</tr>
+
+<tr>
+<td align="left">数组</td>
+<td align="left">new[]/delete[]</td>
+<td align="left">手动计算</td>
+</tr>
+
+<tr>
+<td align="left">重新分配大小</td>
+<td align="left">不能</td>
+<td align="left">可通过realloc改变大小</td>
+</tr>
+
+<tr>
+<td align="left">失败</td>
+<td align="left">抛出异常</td>
+<td align="left">返回空指针</td>
+</tr>
+
+<tr>
+<td align="left">空间大小</td>
+<td align="left">编译器自动计算</td>
+<td align="left">需指定字节数</td>
+</tr>
+
+<tr>
+<td align="left">使用构造/析构函数</td>
+<td align="left">使用</td>
+<td align="left">不使用</td>
+</tr>
+
+<tr>
+<td align="left">重载</td>
+<td align="left">可重载</td>
+<td align="left">不可重载</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="inline-内联函数">inline 内联函数</h1>
+
+<ul>
+<li>关键字<code>inline</code> 必须与函数定义体放在一起才能使函数成为内联，仅将<code>inline</code>放在函数声明前面不起任何作用</li>
+<li>inline只适合函数体内代码简单的函数使用，不能包含复杂的结构控制语句例如while、switch，并且内联函数本身不能是递归函数</li>
+<li>内联是以代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。</li>
+<li>在类内部定义的函数会默认声明为<code>inline</code>函数</li>
+<li>虚函数不允许内联</li>
+<li>对于普通函数<code>g()</code>，如果接口与实现都在头文件中B.h中，如果B.h被多个.cpp源文件包含，那么链接时将会发生函数<code>g()</code>重复定义的错误。此时可将函数<code>g()</code>设置为inline, 便可消除错误</li>
+<li>对于类的成员方法，一般也是要求接口与实现分离，将成员方法的实现放到 .cpp文件中；如果在头文件的类内部给出实现，也可以编译通过（不是好的习惯），因为类内部自带<code>inline</code>。如果在头文件的类外给出成员方法的定义，必须显示的设为<code>inline</code>，否则也会发生重复定义的错误。</li>
+</ul>
+
+<h2 id="内联函数与宏">内联函数与宏</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">内联函数</th>
+<th align="left">宏</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">类型检查</td>
+<td align="left">执行类型检查</td>
+<td align="left">不执行类型检查</td>
+</tr>
+
+<tr>
+<td align="left">展开</td>
+<td align="left">内联只是一种建议，编译器是否采用内联措施由编译器自己来决定</td>
+<td align="left">强制的内联展开</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="struct-与-class">struct 与 class</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">struct</th>
+<th align="left">class</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">默认成员属性</td>
+<td align="left">public</td>
+<td align="left">private</td>
+</tr>
+
+<tr>
+<td align="left">默认继承属性</td>
+<td align="left">public</td>
+<td align="left">private</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="虚继承">虚继承</h1>
+
+<p>假如类A和类B各自从类X派生（非虚继承且假设类X包含一些数据成员），且类C同时多继承自类A和B，那么C的对象就会拥有两套X的实例数据（可分别独立访问，一般要用适当的消歧义限定符）。但是如果类A与B各自虚继承了类X，那么C的对象就只包含一套类X的实例数据。可以使得虚基类对于由它直接或间接派生的类来说，拥有一个共同的基类对象实例。</p>
+
+<h2 id="实现原理">实现原理</h2>
+
+<p>一般通过虚基类指针和虚基类表实现，每个虚继承的子类都有一个虚基类指针（占用一个指针的存储空间，4字节），该指针指向了一个虚基类表（virtual table），虚表中记录了虚基类与本类的偏移地址；通过偏移地址，这样就找到了虚基类成员。（需要强调的是，虚基类依旧会在子类里面存在拷贝，只是仅仅最多存在一份而已，并不是不在子类里面了）；当虚继承的子类被当做父类继承时，虚基类指针也会被继承。</p>
+
+<h1 id="虚函数">虚函数</h1>
+
+<h2 id="virtual">virtual</h2>
+
+<ul>
+<li>只能修饰成员函数，不能修饰非成员函数</li>
+<li>不能修饰静态成员函数</li>
+<li>不能修饰构造函数</li>
+<li>不能修饰内联函数，若修饰内联函数，编译器会自动忽略掉inline关键字</li>
+</ul>
+
+<h2 id="实现原理-1">实现原理</h2>
+
+<ul>
+<li>当类中含有虚函数时，则在实例化该类的对象时，则会产生一个虚函数表，并且该对象中包含指向该虚函数表的指针，称为虚函数表指针。在一个含有虚函数的对象中，虚函数表指针占据该对象所占据内存空间的前四个地址单位（32位 x86机器中）</li>
+<li>当使用一个基类的指针指向派生类的对象时，则会通过该指针访问到派生类的虚函数表指针，从而进一步访问到派生类的虚函数</li>
+</ul>
+
+<h2 id="虚析构函数">虚析构函数</h2>
+
+<p>当使用基类指针指向派生类对象时，则会通过该指针访问到派生类的虚函数表指针，从而进一步访问到派生类的虚析构函数。所以当释放该基类指针时，则会执行派生类的虚析构函数，派生类的析构函数执行完毕后则会自动执行基类的析构函数</p>
+
+<h2 id="纯虚函数">纯虚函数</h2>
+
+<p>纯虚函数的定义：</p>
+
+<pre><code class="language-c++"> virtual void func() = 0;
+</code></pre>
+
+<p>纯虚函数的函数指针也保存在虚函数表中，且函数指针的值等于0；纯虚函数不必进行具体实现。</p>
+
+<h2 id="抽象类">抽象类</h2>
+
+<p>含有纯虚函数的类，称为抽象类，该类不能创建对象(抽象类不能实例化)。一个继承于抽象类的子类，只有实现了父类所有的抽象方法才能够是非抽象类。</p>
+
+<h2 id="接口类">接口类</h2>
+
+<p>只含有纯虚函数，而不含有其他成员函数和数据成员的类，称为接口类。</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">抽象类</th>
+<th align="left">接口类</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">构造方法</td>
+<td align="left">可以有构造方法</td>
+<td align="left">不能有构造方法</td>
+</tr>
+
+<tr>
+<td align="left">成员变量</td>
+<td align="left">可以有普通成员变量</td>
+<td align="left">不能有普通成员变量</td>
+</tr>
+
+<tr>
+<td align="left">非纯虚函数</td>
+<td align="left">可以有实现了的方法</td>
+<td align="left">必须全部为纯虚函数</td>
+</tr>
+
+<tr>
+<td align="left">纯虚函数的访问类型</td>
+<td align="left">可以是public、protected</td>
+<td align="left">必须为public</td>
+</tr>
+
+<tr>
+<td align="left">静态成员函数</td>
+<td align="left">可包含静态成员函数</td>
+<td align="left">不能包含静态成员函数</td>
+</tr>
+
+<tr>
+<td align="left">静态成员变量</td>
+<td align="left">可以有，访问类型可以为任意</td>
+<td align="left">可以有，访问类型为public、static、final</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="重载overload覆盖override与隐藏hding">重载（overload）、覆盖（override）与隐藏（hding）</h1>
+
+<h2 id="重载">重载</h2>
+
+<p>重载是指不同的函数使用相同的函数名，但是函数的参数个数或类型不同。调用的时候根据函数的参数来区别不同的函数。</p>
+
+<h3 id="重载的条件">重载的条件：</h3>
+
+<ul>
+<li>相同范围（在同一个类中）</li>
+<li>函数名字相同</li>
+<li>参数不同</li>
+<li><code>virtual</code>关键字可有可无</li>
+<li>不能通过访问权限、返回类型、抛出的异常进行重载</li>
+</ul>
+
+<h2 id="覆盖">覆盖</h2>
+
+<p>覆盖（也叫重写）是指在派生类中重新对基类中的虚函数（注意是虚函数）重新实现。即函数名和参数都一样，只是函数的实现体不一样。</p>
+
+<h3 id="覆盖的条件">覆盖的条件：</h3>
+
+<ul>
+<li>不同范围（分别位于派生类和基类中）</li>
+<li>函数名字相同</li>
+<li>参数相同</li>
+<li>返回类型相同</li>
+<li>基类函数必须有<code>vitual</code>关键字</li>
+<li>覆盖方法的访问修饰符一定要大于被覆盖方法的访问修饰符（public &gt; protected &gt; default &gt; private）</li>
+<li>被覆盖的方法不能为private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖</li>
+</ul>
+
+<h2 id="隐藏">隐藏</h2>
+
+<p>隐藏是指派生类中的函数把基类中相同名字的函数屏蔽掉了。</p>
+
+<h3 id="隐藏条件">隐藏条件</h3>
+
+<ul>
+<li>如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无<code>virtual</code>关键字，基类的函数将被隐藏</li>
+<li>如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有<code>virtual</code>关键字。此时，基类的函数被隐藏</li>
+</ul>
+
+<h1 id="initializerlist-列表初始化">initializer_list 列表初始化</h1>
+
+<ul>
+<li>常成员变量必须在初始化列表中初始化</li>
+<li>成员类型是没有默认构造函数的类，必须在初始化列表中初始化</li>
+<li>成员变量的初始化顺序与初始化列表中的顺序无关，只与在类中声明的顺序有关</li>
+</ul>
+
+<h1 id="extern-c">extern &quot;C&quot;</h1>
+
+<ul>
+<li>extern &quot;C&quot; 只是一种连接约定，并不影响调用函数的语义</li>
+<li>在每个C ++程序中，所有非静态函数都在二进制文件中表示为符号。这些符号是特殊文本字符串，用于唯一标识程序中的函数。</li>
+<li>在C中，符号名称与函数名称相同。</li>
+<li>因为C++允许重载并且具有C不具备的许多功能 - 比如类，成员函数，异常规范 - 所以不可能简单地使用函数名作为符号名。为了解决这个问题，C++使用了所谓的名称修改，它将函数名称和所有必要信息（如参数的数量和类型）转换为仅由编译器和链接器处理的字符串。</li>
+<li>由于C和C++对符号处理的不同这就导致一个问题：如果C++中使用C语言实现的函数，在编译链接的时候，会出错，提示找不到对应的符号。</li>
+<li>将函数指定为extern &quot;C&quot;，则编译器不会对其执行名称修改，并且可以使用其符号名称作为函数名称直接访问它。</li>
+<li>经常使用条件编译建立起公共的C和C++头文件</li>
+</ul>
+
+<pre><code class="language-c++">#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+    ...
+    ...
+#ifdef __cplusplus
+}
+#endif
+</code></pre>
+
+<h1 id="实现类string">实现类String</h1>
+
+<pre><code class="language-c++">class String {
+public:
+    String(const char *str = nullptr); // 通用构造函数
+    String(const String &amp;another); // 拷贝构造函数
+    String&amp; operater =(const String &amp;rhs); // 赋值函数
+    ~String(); // 析构函数
+private:
+    char *m_data;
+};
+String::String(const char *str = NULL) {
+    if (str == nullptr) {
+        m_data = new char[1];
+        m_data[0] = '/0';
+    } else {
+        m_data = new char[strlen(str) + 1];
+        strcpy(m_data, str);
+    }
+}
+String::String(const String&amp; another) {
+    m_data = new char[strlen(another.m_data) + 1];
+    strcpy(m_data, another.m_data);
+}
+String&amp; String::operator=(const String&amp; another) {
+    if (this != &amp;another) {
+        String strTmp(another);
+        char *pTmp = strTmp.m_data;
+        strTmp.m_data = m_data;
+        m_data = pTmp;
+    }
+    return *this;
+}
+String::~String() {
+    delete[] m_data;
+};
+</code></pre>
+
+<h1 id="实现单例模式">实现单例模式</h1>
+
+<h2 id="饿汉模式">饿汉模式</h2>
+
+<p>单例实例在程序运行时被立即执行初始化</p>
+
+<pre><code class="language-c++">class singleton {
+public:
+    static string&amp; getInstance() {
+        return instance;
+    }
+private:
+    singleton() {}
+    singleton(const singleton&amp;) {}
+    singleton&amp; operator=(const singleton&amp;) {}
+    ~singleton() {}
+    static singleton instance;
+};
+
+// init
+singleton singleton::instance;
+</code></pre>
+
+<p>由于在main函数之前初始化，所以没有线程安全的问题。但是潜在问题在于no-local static对象（函数外的static对象）在不同编译单元中的初始化顺序是未定义的。也即，<code>static singleton instance</code>和<code>static singleton&amp; getInstance()</code>二者的初始化顺序不确定，如果在初始化完成之前调用 <code>getInstance()</code> 方法会返回一个未定义的实例。</p>
+
+<h2 id="懒汉模式">懒汉模式</h2>
+
+<p>单例实例在第一次被使用时才进行初始化，这叫做延迟初始化。</p>
+
+<h3 id="单线程环境">单线程环境</h3>
+
+<pre><code class="language-c++">class singleton {
+public:
+    static singleton* getInstance() {
+        if (instance == nullptr) {
+            instance = new singleton();
+        }
+        return instance;
+    }
+private:
+    singleton() {}
+    singleton(const singleton&amp;) {}
+    singleton&amp; operator=(const singleton&amp;) {}
+    ~singleton() {}
+    static singleton* instance;
+};
+
+// init
+singleton* singleton::instance = nullptr;
+</code></pre>
+
+<p>上面代码存在内存泄漏问题，可以采用智能指针和使用静态的嵌套类对象来解决。</p>
+
+<pre><code class="language-c++">class singleton {
+public:
+    static singleton* getInstance() {
+        if (instance == nullptr) {
+            instance = new singleton();
+        }
+        return instance;
+    }
+private:
+    singleton() {}
+    singleton(const singleton&amp;) {}
+    singleton&amp; operator=(const singleton&amp;) {}
+    ~singleton() {}
+    class deletor {
+        public:
+            ~deletor() {
+                if (singleton::instance != nullptr) {
+                    delete singleton::instance;
+                }
+            }
+    };
+    static deletor deletorInstance;
+    static singleton* instance;
+};
+
+// init
+singleton* singleton::instance = nullptr;
+</code></pre>
+
+<p>在程序运行结束时，系统会调用静态成员<code>deletorInstance</code>的析构函数，该析构函数会删除单例的唯一实例。</p>
+
+<h3 id="多线程环境">多线程环境</h3>
+
+<p>使用双检测锁模式（DCL: Double-Checked Locking Pattern）。线程安全问题仅出现在第一次初始化（new）过程中，而在后面获取该实例的时候并不会遇到，它通过加锁前检测是否已经初始化，避免了每次获取实例时都要首先获取锁资源。</p>
+
+<pre><code class="language-c++">static singleton* getInstace() {
+    if (instance == nullptr) {
+        Lock lock;  // 基于作用域的加锁，超出作用域，自动调用析构函数解锁
+        if (instance == nullptr) {
+            instance = new singleton();
+        }
+    }
+    return instance;
+}
+</code></pre>
+
+<h3 id="best-of-all">best of all</h3>
+
+<p>C++11规定了local static在多线程条件下的初始化行为，要求编译器保证了内部静态变量的线程安全性。在C++11标准下，《Effective C++》提出了一种更优雅的单例模式实现，使用函数内的 local static 对象。这样，只有当第一次访问<code>getInstance()</code>方法时才创建实例。这种方法也被称为Meyers' Singleton。</p>
+
+<pre><code class="language-c++">class singleton {
+public:
+    static singleton&amp; getInstance() {
+        static singleton instance;
+        return instance;
+    }
+private:
+    singleton() {}
+    singleton(const singleton&amp;) {}
+    singleton&amp; operator=(const singleton&amp;) {}
+    ~singleton() {}
+};
+</code></pre>
+
+<h1 id="内存泄露">内存泄露</h1>
+
+<p>如何避免内存泄漏：</p>
+
+<ul>
+<li>用RAII(Resource Acquisition Is Initialization,资源获取即初始化)技法，以构造函数获取资源(内存)，析构函数释放资源</li>
+<li>使用智能指针</li>
+</ul>
+
+<h2 id="野指针">野指针</h2>
+
+<p>野指针指的是还没有初始化的指针</p>
+
+<h2 id="悬空指针">悬空指针</h2>
+
+<p>一个指针的指向对象已被删除，那么就成了悬空指针</p>
+
+<h2 id="智能指针">智能指针</h2>
+
+<h3 id="sharedptr">shared_ptr</h3>
+
+<p><code>shared_ptr</code>多个指针指向相同的对象。<code>shared_ptr</code>使用引用计数，每一个<code>shared_ptr</code>的拷贝都指向相同的内存。每使用他一次，内部的引用计数加1，每析构一次，内部的引用计数减1，减为0时，自动删除所指向的堆内存。<code>shared_ptr</code>内部的引用计数是线程安全的，即引用计数的加减操作都是原子的，但是对象的读取需要加锁</p>
+
+<ul>
+<li><code>shared_ptr</code>内部包含两个指针，一个指向对象，另一个指向控制块(control block)，控制块中包含一个引用计数和其它一些数据</li>
+<li>可以通过<code>unique_ptr</code>来构造<code>shared_ptr</code></li>
+</ul>
+
+<pre><code class="language-c++">unique_ptr&lt;int&gt; p1{new int(0)};
+unqiue_ptr&lt;int&gt; p2{std::move(p1)};
+</code></pre>
+
+<ul>
+<li>不能通过同一个raw pointer来构造多个<code>shared_ptr</code></li>
+<li>使用<code>make_shared</code>来创建<code>shared_ptr</code>会高效，因为<code>make_shared</code>仅使用new操作一次，它的做法是在 heap 上分配一块连续的内存用来容纳<code>string(&quot;hello&quot;)</code>和控制块。同样，当<code>shared_ptr</code>的被析构时，也只需一次<code>delete</code>操作</li>
+</ul>
+
+<pre><code class="language-c++">shared_ptr&lt;string&gt; p1{new string(&quot;hello&quot;)}; // 调用两次new操作，一次申请string空间，一次申请控制块空间
+shared_ptr&lt;string&gt; p2 = make_shared&lt;string&gt;(&quot;hello&quot;); // 只调用一次new操作
+</code></pre>
+
+<h4 id="循环引用">循环引用</h4>
+
+<ul>
+<li>使用<code>shared_ptr</code>时，不可避免地会遇到循环引用的情况，这样容易导致内存泄露</li>
+<li>为避免循环引用导致的内存泄露，就需要使用<code>weak_ptr</code>，<code>weak_ptr</code>并不拥有其指向的对象，也就是说，让<code>weak_ptr</code>指向<code>shared_ptr</code>所指向对象，对象的引用计数并不会增加</li>
+<li>只需要将环中的某个<code>shared_ptr</code>替换为<code>weak_ptr</code>即可</li>
+</ul>
+
+<h3 id="uniqueptr">unique_ptr</h3>
+
+<p><code>unique_ptr</code>唯一拥有其所指对象，同一时刻只能有一个<code>unique_ptr</code>指向给定对象（通过禁止拷贝语义、只有移动语义来实现）。</p>
+
+<ul>
+<li><code>unique_ptr</code>内部存储一个 <code>raw pointer</code>，当<code>unique_ptr</code>析构时，它的析构函数将会负责析构它持有的对象</li>
+<li><code>unique_ptr</code>提供了<code>operator*()</code>和<code>operator-&gt;()</code>成员函数</li>
+<li><code>unique_ptr</code>并不提供 <code>copy</code> 操作，这是为了防止多个<code>unique_ptr</code>指向同一对象</li>
+<li><code>unique_ptr</code>提供了 <code>move</code> 操作，因此我们可以用<code>std::move()</code>来转移<code>unique_ptr</code></li>
+<li>C++14 提供了<code>std::make_unique&lt;T&gt;()</code>函数用来直接创建<code>unique_ptr</code></li>
+</ul>
+
+<h3 id="weakptr">weak_ptr</h3>
+
+<ul>
+<li><code>weak_ptr</code>并不拥有其指向的对象，也就是说，让<code>weak_ptr</code>指向<code>shared_ptr</code>所指向对象，对象的引用计数并不会增加</li>
+<li>因为<code>weak_ptr</code>不持有对象，所以不能通过<code>weak_ptr</code>去访问对象的成员</li>
+<li>由<code>weak_ptr</code>来构造<code>shared_ptr</code>由两种方式：
+
+<ul>
+<li>调用<code>weak_ptr</code>的<code>lock()</code>方法，要是对象已被析构，那么<code>lock()</code>返回一个空的<code>shared_ptr</code></li>
+<li>将<code>weak_ptr</code>传递给<code>shared_ptr</code>的构造函数，要是对象已被析构，则抛出<code>std::exception</code>异常</li>
+</ul></li>
+<li>由于<code>weak_ptr</code>并不持有对象，因此其指向的对象可能已析构了，判断其所指对象是否析构有两种方法：
+
+<ul>
+<li><code>weak_ptr</code>的<code>use_count()</code>方法，判断引用计数是否为0</li>
+<li>调用<code>weak_pt</code>r的<code>expired()</code>方法，若对象已经被析构，则<code>expired()</code>将返回<code>true</code></li>
+</ul></li>
+</ul>
+
+<h3 id="智能指针的实现">智能指针的实现</h3>
+
+<pre><code class="language-c++">template&lt;typename T&gt;
+class smartPtr{
+public:
+    smartPtr(T *ptr = nullptr) : m_ptr(ptr) {
+        if (ptr == nullptr) {
+            *m_pRefCount = 0;
+        } else {
+            *m_pRefCount = 1;
+        }
+    }
+    smartPtr(const smartPtr&amp; another) {
+        m_ptr = anothter.m_ptr;
+        m_pRefCount = another.m_pRefCount;
+        ++*m_pRefCount;
+    }
+    smartPtr&amp; operator=(const smartPtr&amp; another) {
+        if (this != &amp;another) {
+            if (--*m_pRefCount == 0) {
+                delete m_ptr;
+                delete m_pRefCount;
+            }
+            m_ptr = another.m_ptr;
+            m_pRefCount = another.m_pRefCount;
+            ++*m_pRefCount;
+        }
+        return *this;
+    }
+    T* operator-&gt;() {
+        assert(m_ptr == nullptr);
+        return m_ptr;
+    }
+    T&amp; operator*() {
+        assert(m_ptr == nullptr);
+        return *m_ptr;
+    }
+private:
+    T *m_ptr;
+    size_t *m_pRefCount;
+};
+
+</code></pre>
+
+<h1 id="类型转换">类型转换</h1>
+
+<h2 id="staticcast">static_cast</h2>
+
+<ul>
+<li>用于基本数据类型之间的转换，如int-&gt;float等</li>
+<li>把空指针转换成目标类型的空指针</li>
+<li>把任何类型的表达式类型转换成void类型</li>
+<li>用于类层次结构中父类和子类之间指针和引用的转换。进行上行转换（把派生类的指针或引用转换成基类表示）是安全的；进行下行转换（把基类指针或引用转换成派生类表示）时，由于没有动态类型检查，所以是不安全的。</li>
+<li>static_cast不能转换掉expression的const、volatile、或者__unaligned属性</li>
+</ul>
+
+<h2 id="constcast">const_cast</h2>
+
+<ul>
+<li>用于 const 与非 const、volatile 与非 volatile 之间的转换</li>
+<li>const_cast一般用于修改指针</li>
+<li>如果有一个函数，它的形参是non-const类型变量，而且函数不会对实参的值进行改动，这时我们可以使用类型为const的变量来调用函数，此时可使用const_cast</li>
+</ul>
+
+<pre><code class="language-c++">void foo(int* num) {
+    cout &lt;&lt; num &lt;&lt; endl;
+}
+
+int main()
+{
+    const int num = 0;
+    foo(const_cast&lt;int*)(&amp;num));
+    return 0;
+}
+</code></pre>
+
+<h2 id="dynamiccast">dynamic_cast</h2>
+
+<p>dynamic_cast 用于在类的继承层次之间进行类型转换，它既允许向上转型（Upcasting），也允许向下转型（Downcasting）。向上转型是无条件的，不会进行任何检测，所以都能成功；向下转型的前提必须是安全的，要借助 RTTI 进行检测，所以只有一部分能成功。</p>
+
+<ul>
+<li>dynamic_cast 只能转换指针类型和引用类型</li>
+<li>对于指针，如果转换失败将返回 NULL；对于引用，如果转换失败将抛出<code>std::bad_cast</code>异常</li>
+</ul>
+
+<h3 id="向上转型">向上转型</h3>
+
+<p>向上转型时，只要待转换的两个类型之间存在继承关系，并且基类包含了虚函数（这些信息在编译期间就能确定），就一定能转换成功。因为向上转型始终是安全的，所以 dynamic_cast 不会进行任何运行期间的检查，这个时候的 dynamic_cast 和 static_cast 就没有什么区别</p>
+
+<h3 id="向下转型">向下转型</h3>
+
+<p>向下转型是有风险的，dynamic_cast 会借助 RTTI 信息进行检测，确定安全的才能转换成功，否则就转换失败。</p>
+
+<p>当使用 dynamic_cast 对指针进行类型转换时，程序会先找到该指针指向的对象，再根据对象找到当前类（指针指向的对象所属的类）的类型信息，并从此节点开始沿着继承链向上遍历，如果找到了要转化的目标类型，那么说明这种转换是安全的，就能够转换成功，如果没有找到要转换的目标类型，那么说明这种转换存在较大的风险，就不能转换。</p>
+
+<h2 id="reinterpretcast">reinterpret_cast</h2>
+
+<p>reinterpret_cast 这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，非常简单粗暴，所以风险很高。</p>
+
+<h1 id="raii">RAII</h1>
+
+<p>RAII是Resource Acquisition Is Initialization（“资源获取即初始化”）的简称，是C++语言的一种管理资源、避免泄漏的惯用法。
+一般采用如下方法：</p>
+
+<ul>
+<li>利用“函数的局部对象无论函数以何种方式(包括因异常)结束都会被析构”这一特性，将“一定要释放的资源”放进局部对象的析构函数；</li>
+<li>使用智能指针。</li>
+</ul>
+
+<h1 id="rtti">RTTI</h1>
+
+<p>RTTI是“Runtime Type Information”的缩写，意思是运行时类型信息，它提供了运行时确定对象类型的方法。</p>
+
+<h1 id="stl">STL</h1>
+
+<h2 id="map与unorderedmap">map与unordered_map</h2>
+
+<h3 id="mapset">map/set</h3>
+
+<ul>
+<li>底层实现是红黑树</li>
+<li>红黑树特点
+
+<ul>
+<li>节点要么是红色，要么是黑色</li>
+<li>根节点为黑色</li>
+<li>每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)</li>
+<li>从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。</li>
+</ul></li>
+</ul>
+
+<h3 id="unordered-mapset">unordered map/set</h3>
+
+<ul>
+<li>底层实现是hash表</li>
+</ul>
+
+<h1 id="c-11">c++ 11</h1>
+
+<h2 id="范围-for">范围 for</h2>
+
+<h2 id="auto-decltype">auto decltype</h2>
+
+<ul>
+<li>decltype：编译时类型推导，以一个普通表达式为参数，返回该表达式类型，并不会对该表达式求值</li>
+<li></li>
+</ul>
+
+<h2 id="final-override">final override</h2>
+
+<h2 id="stdmove-stdforward">std::move std::forward</h2>
+
+<ul>
+<li>std::move() 接受一个参数，然后返回一个该参数对应的右值引用</li>
+<li>std::forward() 接受一个参数，然后返回该参数本来所对应的类型的引用</li>
+</ul>
+
+<h2 id="deafulted-deleted">deafulted deleted</h2>
+
+<h3 id="deafulted">deafulted</h3>
+
+<p>C++ 的类有四类特殊成员函数，它们分别是：默认构造函数、析构函数、拷贝构造函数以及拷贝赋值运算符。这些类的特殊成员函数负责创建、初始化、销毁，或者拷贝类的对象。如果程序员没有显式地为一个类定义某个特殊成员函数，而又需要用到该特殊成员函数时，则编译器会隐式的为这个类生成一个默认的特殊成员函数。但是，如果程序员为类 X 显式的自定义了非默认构造函数，编译器将不再会为它隐式的生成默认构造函数。如果需要用到默认构造函数来创建类的对象时，程序员必须自己显式的定义默认构造函数。</p>
+
+<ul>
+<li>Defaulted 函数特性仅适用于类的特殊成员函数，且该特殊成员函数没有默认参数</li>
+<li></li>
+</ul>
+
+<h3 id="deleted">deleted</h3>
+
+<p>为了能够让程序员显式的禁用某个函数，C++11 标准引入了一个新特性：deleted 函数。必须在函数第一次声明的时候将其声明为 deleted 函数，否则编译器会报错。</p>
+
+<ul>
+<li>程序员只需在函数声明后加上“=delete;”，就可将该函数禁用。例如，我们可以将类 X 的拷贝构造函数以及拷贝赋值操作符声明为 deleted 函数，就可以禁止类 X 对象之间的拷贝和赋值</li>
+<li>Deleted 函数特性还可以用来禁用某些用户自定义的类的 new 操作符，从而避免在自由存储区创建类的对象</li>
+<li>Deleted 函数特性还可用于禁用类的某些转换构造函数，从而避免不期望的类型转换</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>13ean </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/>https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://13ean.github.io/tags/c&#43;&#43;/">
+                    #C&#43;&#43;</a></span>
+            
+            <span class="tag"><a href="https://13ean.github.io/tags/interview/">
+                    #interview</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://13ean.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="prev" rel="prev" title="数据库系统"><i class="iconfont icon-left"></i>&nbsp;数据库系统</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "13ean" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://13ean.github.io">13ean</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="https://13ean.github.io/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

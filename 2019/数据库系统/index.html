@@ -10,7 +10,7 @@
   
   
   <link rel="prev" href="https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" />
-  
+  <link rel="next" href="https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" />
   <link rel="canonical" href="https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://13ean.github.io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://13ean.github.io/favicon-32x32.png">
@@ -48,12 +48,13 @@
     "headline" : "数据库系统",
     "description" : "视图 视图是一个虚拟表，其内容由查询定义。视图一经定义便存入数据库中。视图中的数据只是存放在基本表中的数据。
 视图作用  简单性：视图可以简化用户的操作 安全性：通过视图用户只能查询和修改他们所看到的数据 逻辑数据独立性：视图可以帮助用户屏蔽真实表结构变化带来的影响  完整性约束 关系完整性约束是为保证数据库中数据的正确性和相容性，对关系模型提出的某种约束条件或规则。完整性通常包括域完整性，实体完整性、参照完整性和用户定义完整性，其中域完整性，实体完整性和参照完整性，是关系模型必须满足的完整性约束条件
- 域完整性：保证指定列的数据具有正确的数据类型、格式和有效的数据范围 实体完整性：指关系的主关键字不能重复也不能取“空值”，保证数据库中数据表的每一个特定实体的记录都是唯一的 参照完整性：定义建立关系之间联系的主关键字与外部关键字引用的约束条件。当增加、修改或删除数据库表中记录时，可以借助参照完整性来保证相关联表之间数据的一致性 用户定义完整性：由用户定义的完整性。用户定义完整性可以定义不属于其他任何完整性分类的特定业务规则  索引 数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。
-索引的优点  通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性 可以大大加快数据的检索速度，这也是创建索引的最主要的原因 可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义 在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间 通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能  索引的缺点  创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加 索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大 当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度  设置索引的原则 应设置索引的情况  较频繁查询的列上创建索引 在经常需要根据范围进行搜索的列上创建索引 在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构 在经常用在连接的列上 在经常需要排序的列上创建索引，因为索引已经排序 在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度  不应设置索引的情况  在查询中很少使用或者参考的列不应该创建索引 选择性很差的列，即这些列取值很少 当修改性能远远大于检索性能时，不应该创建索引  索引分类：  唯一索引：唯一索引不允许两行具有相同的索引值 主键索引：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空 聚集索引(Clustered)：表中各行的物理顺序与索引顺序相同，每个表只能有一个 非聚集索引(Non-clustered)：非聚集索引指定表种记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针  索引类型 顺序索引 使用B树或者B+树作为其索引结构
+ 域完整性：保证指定列的数据具有正确的数据类型、格式和有效的数据范围 实体完整性：指关系的主关键字不能重复也不能取“空值”，保证数据库中数据表的每一个特定实体的记录都是唯一的 参照完整性：定义建立关系之间联系的主关键字与外部关键字引用的约束条件。当增加、修改或删除数据库表中记录时，可以借助参照完整性来保证相关联表之间数据的一致性 用户定义完整性：由用户定义的完整性。用户定义完整性可以定义不属于其他任何完整性分类的特定业务规则  索引 可参考：MySQL索引背后的数据结构及算法原理
+数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。
+索引的优点  通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性 可以大大加快数据的检索速度，这也是创建索引的最主要的原因 可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义 在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间 通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能  索引的缺点  创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加 索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大 当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度  设置索引的原则 应设置索引的情况  较频繁查询的列上创建索引 在经常需要根据范围进行搜索的列上创建索引 在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构 在经常用在连接的列上 在经常需要排序的列上创建索引，因为索引已经排序 在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度  不应设置索引的情况  在查询中很少使用或者参考的列不应该创建索引 选择性很差的列，即这些列取值很少 当修改性能远远大于检索性能时，不应该创建索引  索引分类：  唯一索引：唯一索引不允许两行具有相同的索引值 主键索引：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空 聚集索引(Clustered)：表中各行的物理顺序与索引顺序相同，每个表只能有一个 非聚集索引(Non-clustered)：非聚集索引指定表中记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针  索引类型 顺序索引 使用B树或者B+树作为其索引结构
 散列索引 哈希索引（hash index）基于哈希表实现。对于每一行数据，存储引擎都会对所有的索引列计算一个哈希码（hash code），哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。对于hash相同的，采用链表的方式解决冲突。
 优点：
  访问哈希索引的数据非常快  限制：
- 哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行 哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序 哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序 哈希索引只支持等值比较查询，包括=、IN()、&lt;&gt;，也不支持任何范围查询 当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行  散列索引与顺序索引的区别    Hash索引 顺序索引     无序 有序   只支持点查询 支持点查询和范围查询    存储过程 存储过程是一个预编译的SQL语句。",
+ 哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行 哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序 哈希索引只支持等值比较查询，包括=、IN()、&lt;&gt;，也不支持任何范围查询 当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行  散列索引与顺序索引的区别     Hash索引 顺序索引     实现方式 Hash表 B+树   是否有序 无序 有序   查询方式 只支持点查询 支持点查询和范围查询    存储过程 存储过程是一个预编译的SQL语句。",
     "inLanguage" : "zh-CN",
     "author" : "13ean",
     "creator" : "13ean",
@@ -64,8 +65,8 @@
     "datePublished": "2019-03-28 00:00:00 &#43;0000 UTC",
     "dateModified" : "2019-03-28 00:00:00 &#43;0000 UTC",
     "url" : "https://13ean.github.io/2019/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/",
-    "wordCount" : "326",
-    "keywords" : [ "OS","interview", "13ean&#39;s Github Page"]
+    "wordCount" : "410",
+    "keywords" : [ "database","interview", "13ean&#39;s Github Page"]
 }
 </script>
 
@@ -178,6 +179,8 @@
 
 <h1 id="索引">索引</h1>
 
+<p>可参考：<a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html">MySQL索引背后的数据结构及算法原理</a></p>
+
 <p>数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。</p>
 
 <h2 id="索引的优点">索引的优点</h2>
@@ -225,7 +228,7 @@
 <li>唯一索引：唯一索引不允许两行具有相同的索引值</li>
 <li>主键索引：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空</li>
 <li>聚集索引(Clustered)：表中各行的物理顺序与索引顺序相同，每个表只能有一个</li>
-<li>非聚集索引(Non-clustered)：非聚集索引指定表种记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针</li>
+<li>非聚集索引(Non-clustered)：非聚集索引指定表中记录的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置指针</li>
 </ul>
 
 <h3 id="索引类型">索引类型</h3>
@@ -249,7 +252,6 @@
 <ul>
 <li>哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行</li>
 <li>哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序</li>
-<li>哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序</li>
 <li>哈希索引只支持等值比较查询，包括=、IN()、&lt;&gt;，也不支持任何范围查询</li>
 <li>当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行</li>
 </ul>
@@ -259,6 +261,7 @@
 <table>
 <thead>
 <tr>
+<th align="center"></th>
 <th align="center">Hash索引</th>
 <th align="center">顺序索引</th>
 </tr>
@@ -266,11 +269,19 @@
 
 <tbody>
 <tr>
+<td align="center">实现方式</td>
+<td align="center">Hash表</td>
+<td align="center">B+树</td>
+</tr>
+
+<tr>
+<td align="center">是否有序</td>
 <td align="center">无序</td>
 <td align="center">有序</td>
 </tr>
 
 <tr>
+<td align="center">查询方式</td>
 <td align="center">只支持点查询</td>
 <td align="center">支持点查询和范围查询</td>
 </tr>
@@ -403,22 +414,23 @@
 
 <h3 id="先后顺序图串行化图">先后顺序图/串行化图</h3>
 
-<p>对于调度S，先后顺序图是一个有向图<span  class="math">\(G = (N, E)\)</span>，由节点集合<span  class="math">\(N\)</span>和有向边集合<span  class="math">\(E\)</span>构成，构建方式如下：</p>
+<p>对于调度S，先后顺序图是一个有向图 <span  class="math">\(G = (N, E)\)</span>，由节点集合 <span  class="math">\(N\)</span> 和有向边集合 <span  class="math">\(E\)</span> 构成，构建方式如下：</p>
 
 <ul>
 <li>为每个事务创建一个节点</li>
-<li>如果事务<span  class="math">\(T_i\)</span>读取了<span  class="math">\(T_j\)</span>已经写操作的数据项，创建一条有向边<span  class="math">\(T_j \to T_i\)</span></li>
-<li>如果事务<span  class="math">\(T_i\)</span>对<span  class="math">\(T_j\)</span>已经读取的数据项进行写操作，创建一条有向边<span  class="math">\(T_j \to T_i\)</span></li>
-<li>如果事务<span  class="math">\(T_i\)</span>对<span  class="math">\(T_j\)</span>写操作的数据项进行写操作，创建一条有向边<span  class="math">\(T_j \to T_i\)</span>
-如果S的先后顺序图中出现了有向边<span  class="math">\(T_i \to T_j\)</span>，则在任何与之等价的穿行调度<span  class="math">\(S'\)</span>中，<span  class="math">\(T_i\)</span>必须出现在<span  class="math">\(T_j\)</span>的前面。如果先后顺序图中存在环，则该调度不可串行化。</li>
+<li>如果事务 <span  class="math">\(T_i\)</span> 读取了 <span  class="math">\(T_j\)</span> 已经写操作的数据项，创建一条有向边 <span  class="math">\(T_j \to T_i\)</span></li>
+<li>如果事务 <span  class="math">\(T_i\)</span> 对 <span  class="math">\(T_j\)</span> 已经读取的数据项进行写操作，创建一条有向边 <span  class="math">\(T_j \to T_i\)</span></li>
+<li>如果事务 <span  class="math">\(T_i\)</span> 对 <span  class="math">\(T_j\)</span> 写操作的数据项进行写操作，创建一条有向边 <span  class="math">\(T_j \to T_i\)</span></li>
 </ul>
+
+<p>如果 <span  class="math">\(S\)</span> 的先后顺序图中出现了有向边 <span  class="math">\(T_i \to T_j\)</span>，则在任何与之等价的串行调度 <span  class="math">\(S'\)</span> 中，<span  class="math">\(T_i\)</span> 必须出现在 <span  class="math">\(T_j\)</span> 的前面。如果先后顺序图中存在环，则该调度不可串行化。</p>
 
 <h2 id="数据冲突引起的问题">数据冲突引起的问题</h2>
 
 <ul>
-<li>脏读（read uncommitted data）：在<span  class="math">\(T_2\)</span>提交前，<span  class="math">\(T_1\)</span>读取了<span  class="math">\(T_2\)</span>已经修改了的数据</li>
-<li>不可重复读（unreaptable read）：在<span  class="math">\(T_2\)</span>提交前，<span  class="math">\(T_1\)</span>修改了<span  class="math">\(T_2\)</span>已经读取的数据，如果<span  class="math">\(T_2\)</span>再次读取该数据，则发现不同的值</li>
-<li>更新丢失（overwrite uncommitted data）：在<span  class="math">\(T_2\)</span>提交前，<span  class="math">\(T_1\)</span>修改了<span  class="math">\(T_2\)</span>已经写的数据。</li>
+<li>脏读（read uncommitted data）：在 <span  class="math">\(T_2\)</span> 提交前，<span  class="math">\(T_1\)</span> 读取了 <span  class="math">\(T_2\)</span> 已经修改了的数据</li>
+<li>不可重复读（unreaptable read）：在 <span  class="math">\(T_2\)</span> 提交前，<span  class="math">\(T_1\)</span> 修改了 <span  class="math">\(T_2\)</span> 已经读取的数据，如果 <span  class="math">\(T_2\)</span> 再次读取该数据，则发现不同的值</li>
+<li>更新丢失（overwrite uncommitted data）：在 <span  class="math">\(T_2\)</span> 提交前，<span  class="math">\(T_1\)</span> 修改了 <span  class="math">\(T_2\)</span> 已经写的数据。</li>
 </ul>
 
 <h2 id="事务的隔离级别">事务的隔离级别</h2>
@@ -464,13 +476,13 @@
 </tbody>
 </table>
 
-<h2 id="乐观与悲观">乐观与悲观</h2>
+<h2 id="解决冲突的乐观与悲观方法">解决冲突的乐观与悲观方法</h2>
 
 <h3 id="悲观技术">悲观技术</h3>
 
 <h4 id="加锁方法">加锁方法</h4>
 
-<p>加锁是并发事务串行化的常用方法。事务必须在开始影响的数据库读/写操作前获声明一个共享的（读）锁或者专用的（写）锁。如果声明互斥锁，锁禁止其他事务修改甚至读取该数据项。</p>
+<p>加锁是并发事务串行化的常用方法。事务必须在开始数据库读/写操作前获声明一个共享的（读）锁或者互斥的（写）锁。如果声明互斥锁，锁禁止其他事务修改甚至读取该数据项。</p>
 
 <ul>
 <li>共享锁：如果事务在一个数据项上加上共享锁，他只能读而不能更新该数据项。</li>
@@ -484,7 +496,7 @@
 <ul>
 <li>事务对一个数据项操作之前，必须先获得对该项的锁</li>
 <li>一旦事务释放了第一个锁，就不能再获得任何新锁</li>
-<li>如果允许对锁进行升级，只能再增长阶段进行，且事务必须等待，知道另一个事务释放了该数据项的共享锁。锁的降级只能再缩减阶段进行</li>
+<li>如果允许对锁进行升级，只能在增长阶段进行，且事务必须等待，直到另一个事务释放了该数据项的共享锁。锁的降级只能在缩减阶段进行</li>
 </ul>
 
 <p>算法：</p>
@@ -568,27 +580,27 @@
 <li>事务<span  class="math">\(T\)</span>发出一个读请求 <span  class="math">\(read(x)\)</span>
 
 <ul>
-<li>若 <span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
-<li>反之，若 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则读操作继续，并令<span  class="math">\(readTimestamp(x) = T_{timestamp}\)</span></li>
+<li>若 <span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则事务 <span  class="math">\(T\)</span> 将被回滚，并以一个新的时间戳启动</li>
+<li>反之，若 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则读操作继续，并令 <span  class="math">\(readTimestamp(x) = T_{timestamp}\)</span></li>
 </ul></li>
-<li>事务T发出一个写请求 write(x)
+<li>事务T发出一个写请求 <span  class="math">\(write(x)\)</span>
 
 <ul>
-<li>若<span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
-<li>若<span  class="math">\(readTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
-<li>否则，<span  class="math">\(readTimestamp(x) \le T_{timestamp}\)</span> 且 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则写操作继续，并令<span  class="math">\(writeTimestamp(x) = T_{timestamp}\)</span></li>
+<li>若 <span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则事务 <span  class="math">\(T\)</span> 将被回滚，并以一个新的时间戳启动</li>
+<li>若 <span  class="math">\(readTimestamp(x) > T_{timestamp}\)</span>，则事务 <span  class="math">\(T\)</span> 将被回滚，并以一个新的时间戳启动</li>
+<li>否则，<span  class="math">\(readTimestamp(x) \le T_{timestamp}\)</span> 且 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则写操作继续，并令 <span  class="math">\(writeTimestamp(x) = T_{timestamp}\)</span></li>
 </ul></li>
 </ul>
 
 <h5 id="托马斯写规则">托马斯写规则</h5>
 
 <ul>
-<li>事务T发出一个写请求 write(x)
+<li>事务T发出一个写请求 <span  class="math">\(write(x)\)</span>
 
 <ul>
-<li>若<span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则写操作被忽略</li>
-<li>若<span  class="math">\(readTimestamp(x) > T_{timestamp}\)</span>，则事务<span  class="math">\(T\)</span>将被回滚，并以一个新的时间戳启动</li>
-<li>否则，<span  class="math">\(readTimestamp(x) \le T_{timestamp}\)</span> 且 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则写操作继续，并令<span  class="math">\(writeTimestamp(x) = T_{timestamp}\)</span></li>
+<li>若 <span  class="math">\(writeTimestamp(x) > T_{timestamp}\)</span>，则写操作被忽略</li>
+<li>若 <span  class="math">\(readTimestamp(x) > T_{timestamp}\)</span>，则事务 <span  class="math">\(T\)</span> 将被回滚，并以一个新的时间戳启动</li>
+<li>否则，<span  class="math">\(readTimestamp(x) \le T_{timestamp}\)</span> 且 <span  class="math">\(writeTimestamp(x) \le T_{timestamp}\)</span>，则写操作继续，并令 <span  class="math">\(writeTimestamp(x) = T_{timestamp}\)</span></li>
 </ul></li>
 </ul>
 
@@ -609,15 +621,15 @@
 <li><strong>写</strong>：验证通过，没有发现冲突，那么把私有工作区的修改复制到数据库公共数据中</li>
 </ul>
 
-<p>确认阶段检查事务的读写操作是否发生了冲突。每个事务T开始时分配一个时间戳start(T)，事务的验证阶段分配时间戳validate(T)，事务的结束阶段finish(T)。通过确认检查，需满足以下条件之一：</p>
+<p>确认阶段检查事务的读写操作是否发生了冲突。每个事务 <span  class="math">\(T\)</span> 开始时分配一个时间戳 <span  class="math">\(start(T)\)</span>，事务的验证阶段分配时间戳 <span  class="math">\(validate(T)\)</span>，事务的结束阶段 <span  class="math">\(finish(T)\)</span>。通过确认检查，需满足以下条件之一：</p>
 
 <ul>
-<li>事务T开始前，所有较旧时间戳的事务S均已完成，即start(T) &lt; finish(S)</li>
-<li>若事务T在一个较旧的事务S结束前开始，则：
+<li>事务 <span  class="math">\(T\)</span> 开始前，所有较旧时间戳的事务 <span  class="math">\(S\)</span> 均已完成，即 <span  class="math">\(start(T) > finish(S)\)</span></li>
+<li>若事务 <span  class="math">\(T\)</span> 在一个较旧的事务 <span  class="math">\(S\)</span> 结束前开始，则：
 
 <ul>
-<li>S所写数据不是当前事务T读取的数据，（保证较旧事务的写不被当前事务读）且</li>
-<li>当前事务T进入验证阶段前，所有较旧事务S已完成其写阶段，即validate(T) &lt; finish(S) &lt; validate(T)。（保证写是串行的）</li>
+<li><span  class="math">\(S\)</span> 所写数据不是当前事务 <span  class="math">\(T\)</span> 读取的数据，（保证较旧事务的写不被当前事务读）且</li>
+<li>当前事务 <span  class="math">\(T\)</span> 进入验证阶段前，所有较旧事务 <span  class="math">\(S\)</span> 已完成其写阶段，即 <span  class="math">\(validate(T) > finish(S) > start(T)\)</span>。（保证写是串行的）</li>
 </ul></li>
 </ul>
 
@@ -654,7 +666,7 @@
 
 <ul>
 <li>如果“事务开始”和“事务提交”都出现在日志中，使用日志记录来重做，按日志写入更新后字段的后像</li>
-<li>如果“事务开始”出现在日志文件中，但是“事务提交”未出现，则进行撤销，根据日志文件中数据项的前像，是数据库恢复到事务开始前的状态</li>
+<li>如果“事务开始”出现在日志文件中，但是“事务提交”未出现，则进行撤销，根据日志文件中数据项的前像，使数据库恢复到事务开始前的状态</li>
 </ul>
 
 <h1 id="三个范式">三个范式</h1>
@@ -702,8 +714,8 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://13ean.github.io/tags/os/">
-                    #OS</a></span>
+            <span class="tag"><a href="https://13ean.github.io/tags/database/">
+                    #database</a></span>
             
             <span class="tag"><a href="https://13ean.github.io/tags/interview/">
                     #interview</a></span>
@@ -720,6 +732,8 @@
         
         <a href="https://13ean.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="计算机网络基础"><i class="iconfont icon-left"></i>&nbsp;计算机网络基础</a>
          
+        
+        <a href="https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="next" rel="next" title="C&#43;&#43; 知识点总结">C&#43;&#43; 知识点总结&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

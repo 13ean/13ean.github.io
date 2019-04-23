@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on 13ean&#39;s Github Page</title>
+    <link>https://13ean.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on 13ean&#39;s Github Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://13ean.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C&#43;&#43; 知识点总结</title>
+      <link>https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://13ean.github.io/2019/c-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
+      <description>const 定义常量 指针使用const  指针本身是常量：int * const ptr; 指针指向的内容是常量：const int *ptr;或int const *ptr; 指针本身和指针指向内容均为常量：const int * const ptr;  函数使用const  const修饰函数参数 const修饰函数返回值  类中使用const 常成员变量  const修饰类的成员函数，表示成员常量，不能被修改，同时它只能在初始化列表中赋值  常成员函数  const修饰类的成员函数，则该成员函数不能修改类中任何非const成员函数。一般写在函数的最后来修饰。 对于const类对象/指针/引用，只能调用类的const成员函数，因此，const修饰成员函数的最重要作用就是限制对于const对象的使用 const成员函数不被允许修改它所在对象的任何一个数据成员 const成员函数能够访问对象的const成员，而其他成员函数不可以  const修饰类对象  const修饰类对象表示该对象为常量对象，其中的任何成员都不能被修改 const修饰的对象，该对象的任何非const成员函数都不能被调用  const 常量与宏常量     const 常量 宏常量     处理阶段 编译阶段 预处理阶段进行文本替换   数据类型 有数据类型，编译器可进行类型安全检查 无数据类型，仅进行文本替换   存储方式 在data区分配内存，只有一份拷贝 仅展开，有多少展开多少，因此有多份拷贝   空间占用 只有一份拷贝，节省空间 多份拷贝    static 面向过程的static 静态全局变量  已初始化的在data区中分配内存； 未经初始化的静态全局变量会被初始化为0（而自动变量的值是随机的，除非被显式初始化），存储在bss区 改变了全局变量的链接属性为内部链接，只在该静态全局变量的整个个文件中都可见，而文件之外不可见  静态局部变量  在data区分配内存 静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化 它始终驻留在全局数据区，直到程序运行结束。但其作用域为局部作用域  静态函数  将函数的链接属性变为内部链接，只在其声明的文件中可见，其他文件中不可见  面向对象的static 静态数据成员  每个类只有一个拷贝，不属于特定类对象 存储在data区，因此要在定义时分配内存空间，因此不能再类声明中定义 同全局变量相比，使用静态数据成员有两个优势：  静态数据成员没有进入程序的全局名字空间，因此不存在与程序中其它全局名字冲突的可能性 可以实现信息隐藏。静态数据成员可以是private成员，而全局变量不能   静态成员函数  静态成员函数由于不是与任何的对象相联系，因此它不具有this指针 无法访问类的非静态数据成员和非静态成员函数 出现在类体外的函数定义不能指定关键字static 静态成员函数不能用 const 修饰。因为const成员函数是对该成员函数所具有的 this 指针用 const 来修饰，而静态成员函数不具有 this 指针  sizeof  sizeof计算的是在栈中分配的内存大小 sizeof不计算static变量占的内存 操作数是指针时，返回指针所占内存大小 操作数是数组时，其结果是数组的总字节数 操作数是具体的字符串或数值时，会自动根据其具体类型来进行计算 操作数是联合类型时，sizeof是其最大字节成员的字节数 操作数是结构类型时，sizeof是其成员类型的总字节数，包括补充字节在内 sizeof操作符不能用于函数类型，不完全类型或位字段，不完全类型指具有未知存储大小的数据类型，如未知存储大小的数组类型、未知内容的结构或联合类型、void类型等 当操作数是一个表达式时，不会对表达式求值  内存对齐  第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组，结构体等）的整数倍开始(比如int在32位机为4字节, 则要从4的整数倍地址开始存储)，基本类型不包括struct/class/uinon 结构体作为成员：如果一个结构里有某些结构体成员,则结构体成员要从其内部&amp;quot;最宽基本类型成员&amp;quot;的整数倍地址开始存储 结构体内所有数据成员各自内存对齐后，结构体本身还要进行一次内存对齐，保证整个结构体占用内存大小是结构体内最大数据成员的最小整数倍 有效对齐值=min{自身对齐值，当前指定的pack值}。  volatile  volatile声明的变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等，编译器对访问该变量的代码就不再进行优化 用volatile关键字声明的变量每一次被访问时，执行部件都会从该变量相应的内存单元中取值 没有用volatile关键字声明的变量在被访问的时候可能直接从cpu的寄存器中取值  explicit 在C++中，explicit关键字用来修饰类的构造函数，被修饰的构造函数的类，不能发生相应的隐式类型转换，只能以显示的方式进行类型转换。</description>
+    </item>
+    
+  </channel>
+</rss>
